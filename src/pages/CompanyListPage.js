@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-function StartupListPage() {
+function CompanyListPage() {
   return (
     <>
       <Link to="/my-comparision">
@@ -18,4 +18,4 @@ function StartupListPage() {
     </>
   );
 }
-export default StartupListPage;
+export default CompanyListPage;
