@@ -13,12 +13,12 @@
   justify-content: center;
   align-items: center;
 }
-.add-button-wrap {
+.add-button-widget {
   display: inline-flex;
   flex-direction: column;
   align-items: center;
 }
-.add-button-wrap > span {
+.add-button-widget > span {
   font-size: 1.8rem;
   font-weight: 500;
 }
@@ -35,30 +35,4 @@
 .button-container {
   display: flex;
   justify-content: center;
-}
-.company-box {
-  width: 11.4rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.company-image {
-  width: 8rem;
-  height: 8rem;
-  margin-bottom: 1rem;
-  border-radius: 4rem;
-  background-size: cover;
-  background-image: url('https://logo-resources.thevc.kr/organizations/200x200/1c6530110690076399ab100ab4bdb678073e159f045253e700b08115017634ea_1602996000306496.jpg');
-}
-.company-box-name {
-  font-size: 1.6rem;
-  font-weight: 500;
-  margin: 0.4rem 0;
-}
-.company-box-category {
-  font-size: 1.4rem;
-  font-weight: 500;
-  color: #747474;
-  margin: 0.3rem 0;
 }
