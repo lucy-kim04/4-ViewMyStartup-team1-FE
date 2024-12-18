@@ -1,0 +1,87 @@
+/* 조형민 */
+
+.modal-background {
+  z-index: 1;
+  width: 100%;
+  min-height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000000cc;
+}
+.modal-content {
+  max-height: calc(100vh - 2rem);
+  overflow-y: auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 44.8rem;
+  padding: 2.4rem;
+  border-radius: 1.6rem;
+  background-color: #212121;
+}
+.modal-content-header {
+  height: 3.2rem;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.modal-content-header > img {
+  cursor: pointer;
+}
+.modal-content-header > img:hover {
+  opacity: 0.5;
+}
+#searchName {
+  width: 100%;
+  height: 4.8rem;
+  border: 1px solid #747474;
+  border-radius: 1rem;
+  margin: 2.4rem 0 0;
+  padding: 1.2rem;
+  color: #d8d8d8;
+  /* background-image: url('../assets/images/ic_search.png');
+  background-repeat: no-repeat;
+  background-size: 2.4rem 2.4rem;
+  background-position: bottom 1.2rem right 1.2rem; */
+}
+#searchForm {
+  position: relative;
+}
+.ic-clear {
+  position: absolute;
+  top: 4rem;
+  right: 4.8rem;
+  cursor: pointer;
+}
+.ic-search {
+  position: absolute;
+  top: 3.6rem;
+  right: 1.2rem;
+  cursor: pointer;
+}
+#searchForm > img:hover {
+  opacity: 0.5;
+}
+.latest-selected-companies,
+.search-result-companies {
+  margin-top: 2.4rem;
+}
+.latest-selected-companies-title,
+.search-result-companies-title {
+  font-size: 1.8rem;
+  color: #ffffff;
+  font-weight: 600;
+  margin-bottom: 1.6rem;
+}
+.latest-selected-companies-list > div:not(:last-child),
+.search-result-companies-list > div:not(:last-child) {
+  margin-bottom: 1.2rem;
+}

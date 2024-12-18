@@ -1,26 +1,71 @@
-.my-comparision-title {
+/* 조형민 */
+.modal-wrapper {
+  min-height: 100vh;
+  /* min-height로 설정해야 현재 콘텐츠 전체 높이를 사용 */
+}
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 2.4rem 16rem;
+}
+.my-company-title {
   height: 4rem;
   font-size: 2rem;
   margin-top: 8rem;
   display: flex;
   align-items: center;
 }
-.my-company-box {
+/* .select-comparision-company {
+  display: inline-flex;
+} */
+.my-company-title.comparision {
+  margin-top: 4rem;
+  display: flex;
+  justify-content: space-between;
+}
+.select-comparision-company-max {
+  margin-left: 0.8rem;
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+.company-box,
+.company-box-comparision {
   height: 30rem;
   background-color: #212121;
   display: flex;
   margin: 1.6rem 0 2.4rem;
   justify-content: center;
   align-items: center;
+  border-radius: 0.4rem;
+  position: relative;
+}
+.company-box-comparision > div:not(:last-child) {
+  margin-right: 1.6rem;
+}
+.selection-cancel-button {
+  font-size: 1.6rem;
+  color: #d8d8d8;
+  font-weight: 400;
+  text-decoration: underline;
+  cursor: pointer;
+  position: absolute;
+  right: 1.6rem;
+  top: 1.6rem;
 }
 .add-button-widget {
   display: inline-flex;
   flex-direction: column;
   align-items: center;
+  cursor: pointer;
 }
 .add-button-widget > span {
   font-size: 1.8rem;
   font-weight: 500;
+}
+.add-button-widget:hover {
+  opacity: 0.5;
 }
 .plus-icon {
   width: 4.8rem;
@@ -32,7 +77,7 @@
   border-radius: 3rem;
   margin-bottom: 1.6rem;
 }
-.button-container {
+.button-wrapper {
   display: flex;
   justify-content: center;
 }

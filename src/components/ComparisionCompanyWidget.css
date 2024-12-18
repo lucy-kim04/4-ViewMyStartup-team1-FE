@@ -1,0 +1,21 @@
+/* 조형민 */
+
+.comparision-company-widget {
+  width: 12.6rem;
+  height: 18.7rem;
+  border-radius: 0.8rem;
+  background-color: #333333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.ic-minus {
+  position: absolute;
+  top: 0.8rem;
+  right: 0.8rem;
+  cursor: pointer;
+}
+.ic-minus:hover {
+  opacity: 0.5;
+}
