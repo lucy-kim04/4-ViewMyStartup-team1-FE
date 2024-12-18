@@ -16,3 +16,18 @@ a {
   cursor: pointer;
   text-decoration: none;
 }
+.primary-round-button {
+  width: 18.3rem;
+  height: 4.8rem;
+  background-color: #eb5230;
+  border-radius: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  font-size: 1.6rem;
+}
+.primary-round-button.disable {
+  background-color: #2e2e2e;
+  color: #747474;
+}
