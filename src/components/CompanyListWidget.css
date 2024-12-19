@@ -1,0 +1,37 @@
+/* 조형민 */
+
+.company-list-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.company-list-widget {
+  height: 4.8rem;
+  display: flex;
+  color: #ffffff;
+  /* justify-content: center; */
+  align-items: center;
+}
+.company-image-list {
+  width: 4.8rem;
+  height: 4.8rem;
+  border-radius: 4rem;
+  background-size: cover;
+}
+.company-widget-name-list {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #ffffff;
+  margin: 0 0.8rem 0 1.6rem;
+}
+.company-widget-category-list {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #747474;
+}
+.button-text-wrapper {
+  display: flex;
+  align-items: center;
+}
+.button-text-wrapper > img {
+  margin-right: 0.2rem;
+}

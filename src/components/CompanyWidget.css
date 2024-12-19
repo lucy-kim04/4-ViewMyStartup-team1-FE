@@ -1,0 +1,27 @@
+/* 조형민 */
+
+.company-widget {
+  width: 11.4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.company-image {
+  width: 8rem;
+  height: 8rem;
+  margin-bottom: 1rem;
+  border-radius: 4rem;
+  background-size: cover;
+}
+.company-widget-name {
+  font-size: 1.6rem;
+  font-weight: 500;
+  margin: 0.4rem 0;
+}
+.company-widget-category {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #747474;
+  margin: 0.3rem 0;
+}
