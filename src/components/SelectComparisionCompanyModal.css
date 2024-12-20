@@ -86,3 +86,7 @@
 .search-result-companies-list > div:not(:last-child) {
   margin-bottom: 1.2rem;
 }
+.button-wrapper.done {
+  margin-top: 3rem;
+  color: #ffffff;
+}

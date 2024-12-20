@@ -1,26 +1,88 @@
 // 조형민
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import icDelete from '../assets/images/ic_delete.png';
 import icDeleteCircleSmall from '../assets/images/ic_delete_circle_small.png';
 import icSearch from '../assets/images/ic_search.png';
 import './SelectComparisionCompanyModal.css';
 import CompanyListWidget from './CompanyListWidget';
+import { getCompaniesModal } from '../apis/getComapniesModal';
 
 export default function SelectComparisionCompanyModal({
   onModalClick,
   onCloseClick,
-  onSelectClick,
+  onSaveClick,
   modalBackground,
-  companies,
+  initialCompanies,
+  myCompany,
 }) {
+  const [selectedCompanies, setSelectedCompanies] = useState(initialCompanies);
+  const [searchCompanies, setSearchCompanies] = useState([]);
+  const [searchCount, setSearchCount] = useState();
+  const [loadingError, setLoadingError] = useState(null);
   const [inputValue, setInputValue] = useState('');
+  const formRef = useRef();
+
+  const btnSelectDoneClass = `primary-round-button ${selectedCompanies.length > 0 ? '' : 'disable'}`;
+
   const handleChange = e => {
     setInputValue(e.target.value);
   };
+  const handleSubmit = e => {
+    e.preventDefault();
+    setInputValue(inputValue);
+    handleLoadSearchCompanies({ searchString: inputValue, limit: 20 });
+  };
+  const handleSearchClick = () => {
+    if (!formRef) return;
+    setInputValue(formRef.current.search.value);
+    handleLoadSearchCompanies({ searchString: inputValue, limit: 20 });
+  };
   const handleClearClick = () => {
     setInputValue('');
+    handleLoadSearchCompanies({ searchString: '', limit: 20 });
   };
+  // 기업 목록에 있는 버튼 클릭(선택하기, 선택됨, 선택해제)
+  const handleButtonClick = (btnStatus, company, index) => {
+    if (btnStatus === 'select') {
+      if (selectedCompanies.length >= 5 || company.id === myCompany.id) return;
+      setSelectedCompanies(prevValues => [...prevValues, company]);
+    } else if (btnStatus === 'selectCancel') {
+      console.log('do cancel');
+      setSelectedCompanies(prevValues => {
+        return [...prevValues.slice(0, index), ...prevValues.slice(index + 1)];
+      });
+    } else {
+      return;
+    }
+  };
+  // 선택완료 버튼 클릭 시 각 기업의 compareSelectionCount 1씩 증가
+  const handleSaveClick = () => {
+    for (let i = 0; i < selectedCompanies.length; i++) {
+      selectedCompanies[i].compareSelectionCount++;
+    }
+    onSaveClick(selectedCompanies);
+  };
+
+  const handleLoadSearchCompanies = async options => {
+    let result;
+    try {
+      setLoadingError(null);
+      result = await getCompaniesModal(options);
+      if (!result.companies && result.companies.length === 0) return;
+    } catch (error) {
+      setLoadingError(error);
+    }
+    setSearchCount(result.totalCount);
+    setSearchCompanies(result.companies);
+  };
+  useEffect(() => {
+    setSelectedCompanies(selectedCompanies);
+  }, [selectedCompanies]);
+
+  useEffect(() => {
+    handleLoadSearchCompanies({ searchString: inputValue, limit: 20 });
+  }, []);
   return (
     <div
       className="modal-comparision-background"
@@ -37,7 +99,7 @@ export default function SelectComparisionCompanyModal({
             onClick={onCloseClick}
           />
         </div>
-        <form id="searchForm">
+        <form id="searchForm" onSubmit={handleSubmit} ref={formRef}>
           <input
             id="searchName"
             name="search"
@@ -54,65 +116,54 @@ export default function SelectComparisionCompanyModal({
               onClick={handleClearClick}
             />
           )}
-          <img className="ic-search" src={icSearch} alt="검색" width="24px" />
+          <img
+            className="ic-search"
+            src={icSearch}
+            alt="검색"
+            width="24px"
+            onClick={handleSearchClick}
+          />
         </form>
         <div className="latest-selected-companies">
           <div className="latest-selected-companies-title">
-            {`선택한 기업 (2)`}
+            {`선택한 기업 (${selectedCompanies.length})`}
           </div>
           <div className="latest-selected-companies-list">
-            <CompanyListWidget
-              company={companies[5]}
-              onSelectClick={onSelectClick}
-              btnStatus={'selectCancel'}
-            />
-            <CompanyListWidget
-              company={companies[3]}
-              onSelectClick={onSelectClick}
-              btnStatus={'selectCancel'}
-            />
-            {/* <CompanyListWidget
-              company={company}
-              onSelectClick={onSelectClick}
-            />
-            <CompanyListWidget
-              company={company}
-              onSelectClick={onSelectClick}
-            />
-            <CompanyListWidget
-              company={company}
-              onSelectClick={onSelectClick}
-            /> */}
+            {selectedCompanies.map((company, index) => {
+              return (
+                <CompanyListWidget
+                  key={company.id}
+                  company={company}
+                  onButtonClick={handleButtonClick}
+                  btnStatus="selectCancel"
+                  index={index}
+                  onComparisionButtionClick={handleButtonClick}
+                />
+              );
+            })}
           </div>
         </div>
         <div className="search-result-companies">
-          <div className="search-result-companies-title">{`검색 결과 (2)`}</div>
+          <div className="search-result-companies-title">{`검색 결과 (${searchCount})`}</div>
           <div className="search-result-companies-list">
-            <CompanyListWidget
-              company={companies[5]}
-              onSelectClick={onSelectClick}
-              btnStatus={'selectDone'}
-            />
-            <CompanyListWidget
-              company={companies[3]}
-              onSelectClick={onSelectClick}
-              btnStatus={'selectDone'}
-            />
-            <CompanyListWidget
-              company={companies[4]}
-              onSelectClick={onSelectClick}
-              btnStatus={'select'}
-            />
-            <CompanyListWidget
-              company={companies[1]}
-              onSelectClick={onSelectClick}
-              btnStatus={'select'}
-            />
-            <CompanyListWidget
-              company={companies[0]}
-              onSelectClick={onSelectClick}
-              btnStatus={'select'}
-            />
+            {searchCompanies.map((company, index) => {
+              const btnStatus = `${selectedCompanies.some(el => el.id === company.id) ? 'selectDone' : 'select'}`;
+              return (
+                <CompanyListWidget
+                  key={company.id}
+                  company={company}
+                  onButtonClick={handleButtonClick}
+                  btnStatus={btnStatus}
+                  index={index}
+                  onComparisionButtionClick={handleButtonClick}
+                />
+              );
+            })}
+          </div>
+        </div>
+        <div className="button-wrapper done">
+          <div className={btnSelectDoneClass} onClick={handleSaveClick}>
+            선택완료
           </div>
         </div>
       </div>
