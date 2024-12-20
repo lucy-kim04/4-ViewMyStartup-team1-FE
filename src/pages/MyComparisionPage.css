@@ -15,15 +15,19 @@
   font-size: 2rem;
   margin-top: 8rem;
   display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 /* .select-comparision-company {
   display: inline-flex;
 } */
-.my-company-title.comparision {
+.comparision-company-title {
+  height: 4rem;
+  font-size: 2rem;
   margin-top: 4rem;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 .select-comparision-company-max {
   margin-left: 0.8rem;

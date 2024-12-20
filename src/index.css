@@ -63,6 +63,7 @@ a {
 .primary-rectangle-button-outline.disable {
   border: 1px solid #747474;
   color: #747474;
+  cursor: default;
 }
 .primary-rectangle-button-outline.white {
   border: 1px solid #ffffff;

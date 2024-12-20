@@ -18,6 +18,7 @@
   background-size: cover;
 }
 .company-widget-name-list {
+  max-width: 15rem;
   font-size: 1.6rem;
   font-weight: 500;
   color: #ffffff;
@@ -34,4 +35,5 @@
 }
 .button-text-wrapper > img {
   margin-right: 0.2rem;
+  opacity: 0.5;
 }

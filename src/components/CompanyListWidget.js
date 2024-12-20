@@ -6,22 +6,28 @@ import icCheck from '../assets/images/ic_check.png';
 
 export default function CompanyListWidget({
   company,
-  onSelectClick,
+  onButtonClick,
+  onComparisionButtionClick,
   btnStatus = 'select',
+  index,
+  isMyCompany,
 }) {
-  console.log('🚀 ~ btnStatus:', btnStatus);
   const BUTTONS = {
     select: '선택하기',
     selectCancel: '선택 해제',
-    selectDone: '선택완료',
+    selectDone: '선택됨',
   };
-  const { name, imageUrl, category } = company;
+  const { name, imageUrl, category, compareSelectionCount } = company;
   const korCategory = setCategoryEngToKor(category);
   const btnText = BUTTONS[btnStatus];
-  const btnClassName = `primary-rectangle-button-outline ${btnStatus === 'selectCancel' ? 'disable' : btnStatus === 'selectDone' ? 'white' : ''}`;
+  const btnClassName = `primary-rectangle-button-outline ${btnStatus === 'selectCancel' ? 'white' : btnStatus === 'selectDone' ? 'disable' : ''}`;
 
-  const handleSelectClick = () => {
-    onSelectClick(company);
+  const handleButtonClick = () => {
+    if (isMyCompany) {
+      onButtonClick(company);
+    } else {
+      onComparisionButtionClick(btnStatus, company, index);
+    }
   };
   return (
     <>
@@ -36,7 +42,7 @@ export default function CompanyListWidget({
           <span className="company-widget-name-list">{name}</span>
           <span className="company-widget-category-list">{korCategory}</span>
         </div>
-        <div className={btnClassName} onClick={handleSelectClick}>
+        <div className={btnClassName} onClick={handleButtonClick}>
           <div className="button-text-wrapper">
             {btnStatus === 'selectDone' && (
               <img src={icCheck} alt="아이콘" width="24px" />
