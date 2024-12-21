@@ -16,12 +16,10 @@ function MyComparisionResultPage() {
   const [rankCompareCompanies, setRankCompareCompanies] = useState([]);
 
   const handleLoadCompanyRank = async orderBy => {
-    const { myCompanyIdx, rankCompanies } = await getCompanyRank(
+    const rankCompanies = await getCompanyRank(
       location.state.myCompany.id,
       orderBy,
     );
-    console.log(myCompanyIdx);
-    console.log(rankCompanies);
     setRankCompareCompanies(rankCompanies);
   };
 
