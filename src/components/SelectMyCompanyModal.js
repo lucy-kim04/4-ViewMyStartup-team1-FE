@@ -8,6 +8,7 @@ import './SelectMyCompanyModal.css';
 import CompanyListWidget from './CompanyListWidget';
 import { getLatestSelections } from '../apis/getLatestSelections';
 import { getCompaniesModal } from '../apis/getComapniesModal';
+import AlertModal from './AlertModal';
 
 // 현재 사용자 지정
 const INITIAL_USER_ID = 'fca6ef85-02ba-4868-a7b7-4f49ed16e881';
@@ -25,8 +26,11 @@ export default function SelectMyCompanyModal({
   const [searchCount, setSearchCount] = useState();
   const [loadingError, setLoadingError] = useState(null);
   const [inputValue, setInputValue] = useState('');
+  const [isShowAlert, setIsShowAlert] = useState(false);
+  const [alertText, setAlertText] = useState('');
   const formRef = useRef();
 
+  const modalClassName = `modal-content ${isShowAlert ? 'hide' : ''}`;
   const handleChange = e => {
     setInputValue(e.target.value);
   };
@@ -46,8 +50,11 @@ export default function SelectMyCompanyModal({
   };
   // 기업 목록에 있는 선택하기 버튼 클릭
   const handleButtonClick = selectedCompany => {
-    if (compareCompanies.some(company => company.id === selectedCompany.id))
+    if (compareCompanies.some(company => company.id === selectedCompany.id)) {
+      setAlertText('나의 기업과 비교 기업은 같을 수 없습니다.');
+      setIsShowAlert(true);
       return;
+    }
     const selectionsArray = latestSelections.map(value => value.id);
     const noUpdateUser = selectionsArray.some(
       value => value === selectedCompany.id,
@@ -64,6 +71,10 @@ export default function SelectMyCompanyModal({
       selectionsArray.unshift(selectedCompany.id);
     }
     onSelectClick(selectedCompany, selectionsArray, noUpdateUser);
+  };
+  // alert modal의 닫기 또는 확인 버튼 클릭
+  const handleCloseModalClick = () => {
+    setIsShowAlert(false);
   };
 
   const handleLoadLatestSelections = async () => {
@@ -104,7 +115,7 @@ export default function SelectMyCompanyModal({
       ref={modalBackground}
       onClick={onModalClick}
     >
-      <div className="modal-content">
+      <div className={modalClassName}>
         <div className="modal-content-header">
           <span>나의 기업 선택하기</span>
           <img
@@ -172,6 +183,11 @@ export default function SelectMyCompanyModal({
           </div>
         </div>
       </div>
+      <AlertModal
+        text={alertText}
+        isShow={isShowAlert}
+        onClick={handleCloseModalClick}
+      />
     </div>
   );
 }
