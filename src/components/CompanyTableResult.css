@@ -1,0 +1,102 @@
+/* 조형민 */
+.company-table-title {
+  height: 4rem;
+  font-size: 2rem;
+  margin-top: 4rem;
+  display: flex;
+  align-items: center;
+}
+.company-table-header {
+  margin: 1.6rem 0;
+  height: 4rem;
+  display: flex;
+  flex-direction: row;
+  color: #ffffff;
+  background-color: #2e2e2e;
+  border-radius: 0.4rem;
+  font-size: 1.4rem;
+  font-weight: 500;
+  align-items: center;
+}
+.header-item1,
+.body-item1 {
+  flex-grow: 1.7;
+  flex-basis: 0;
+  min-width: 15rem;
+  text-align: center;
+}
+.header-item2,
+.body-item2 {
+  flex-grow: 2.5;
+  flex-basis: 0;
+  min-width: 18rem;
+  text-align: center;
+}
+.header-item3,
+.header-item4,
+.header-item5,
+.header-item6,
+.body-item3,
+.body-item4,
+.body-item5,
+.body-item6 {
+  flex-grow: 1.4;
+  flex-basis: 0;
+  text-align: center;
+}
+.company-table-body,
+.company-table-body-my {
+  display: flex;
+  flex-direction: row;
+  height: 6.4rem;
+  border-radius: 0.4rem;
+  background-color: #212121;
+  font-size: 1.4rem;
+}
+.company-table-body-my {
+  background-color: #2e2e2e;
+}
+.company-table-body.underline,
+.company-table-body-my.underline {
+  border-bottom: 1px solid #4b4b4b;
+}
+.company-table-image {
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: 2rem;
+  background-size: cover;
+  margin: 0 0.75rem 0 2.4rem;
+}
+.company-table-name {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #ffffff;
+}
+.body-item1,
+.body-item2,
+.body-item3,
+.body-item4,
+.body-item5,
+.body-item6 {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #d8d8d8;
+}
+.body-item1,
+.body-item2 {
+  justify-content: left;
+  overflow: hidden;
+  /* text-overflow: ellipsis; */
+  text-align: left;
+}
+.body-item2-desc {
+  padding: 0 1.5rem;
+  height: 3.2rem;
+  /* white-space: nowrap; */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.6rem;
+  /* -webkit-line-clamp: 2; */
+}

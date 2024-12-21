@@ -1,0 +1,27 @@
+.comparision-company-title {
+  height: 4rem;
+  font-size: 2rem;
+  margin-top: 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.select-comparision-company-max {
+  margin-left: 0.8rem;
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+
+.company-box-comparision {
+  height: 30rem;
+  background-color: #212121;
+  display: flex;
+  margin: 1.6rem 0 2.4rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.4rem;
+  position: relative;
+}
+.company-box-comparision > div:not(:last-child) {
+  margin-right: 1.6rem;
+}

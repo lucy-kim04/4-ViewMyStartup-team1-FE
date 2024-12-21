@@ -7,7 +7,15 @@ import { Link } from 'react-router-dom';
 export default function Header() {
   return (
     <header className="header">
-      <img src={imgLogo} alt="로고" width="112px" height="40px" />
+      <Link to="/">
+        <img
+          className="header-img"
+          src={imgLogo}
+          alt="로고"
+          width="112px"
+          height="40px"
+        />
+      </Link>
       <div className="header-nav">
         <div>
           <Link to="/my-comparision">나의 기업 비교</Link>

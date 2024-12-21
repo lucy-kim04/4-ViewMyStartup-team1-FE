@@ -12,7 +12,7 @@ header {
   display: flex;
   align-items: center;
 }
-header > img {
+.header-img {
   margin-right: 4rem;
 }
 .header-nav {

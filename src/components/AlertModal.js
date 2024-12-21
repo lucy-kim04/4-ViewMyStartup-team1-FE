@@ -1,5 +1,6 @@
 // 조형민
 
+import './AlertModal.css';
 import icDelete from '../assets/images/ic_delete.png';
 
 export default function AlertModal({ text, isShow = false, onClick }) {
