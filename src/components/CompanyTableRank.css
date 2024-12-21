@@ -1,15 +1,15 @@
 /* 조형민 */
-.company-table {
+.company-table-rank {
   margin-bottom: 4rem;
 }
-.company-table-title {
+.company-table-rank-title {
   height: 4rem;
   font-size: 2rem;
   margin-top: 4rem;
   display: flex;
   align-items: center;
 }
-.company-table-header {
+.company-table-rank-header {
   margin: 1.6rem 0;
   height: 4rem;
   display: flex;
@@ -21,34 +21,44 @@
   font-weight: 500;
   align-items: center;
 }
-.header-item1,
-.body-item1 {
+.header-rank-item0,
+.body-rank-item0 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 0.5;
+  flex-basis: 0;
+  min-width: 0.64rem;
+  text-align: center;
+}
+.header-rank-item1,
+.body-rank-item1 {
   flex-grow: 1.7;
   flex-basis: 0;
   min-width: 15rem;
   text-align: center;
 }
-.header-item2,
-.body-item2 {
+.header-rank-item2,
+.body-rank-item2 {
   flex-grow: 2.5;
   flex-basis: 0;
   min-width: 18rem;
   text-align: center;
 }
-.header-item3,
-.header-item4,
-.header-item5,
-.header-item6,
-.body-item3,
-.body-item4,
-.body-item5,
-.body-item6 {
-  flex-grow: 1.4;
+.header-rank-item3,
+.header-rank-item4,
+.header-rank-item5,
+.header-rank-item6,
+.body-rank-item3,
+.body-rank-item4,
+.body-rank-item5,
+.body-rank-item6 {
+  flex-grow: 1.2;
   flex-basis: 0;
   text-align: center;
 }
-.company-table-body,
-.company-table-body-my {
+.company-table-rank-body,
+.company-table-rank-body-my {
   display: flex;
   flex-direction: row;
   height: 6.4rem;
@@ -56,45 +66,45 @@
   background-color: #212121;
   font-size: 1.4rem;
 }
-.company-table-body-my {
+.company-table-rank-body-my {
   background-color: #2e2e2e;
 }
-.company-table-body.underline,
-.company-table-body-my.underline {
+.company-table-rank-body.underline,
+.company-table-rank-body-my.underline {
   border-bottom: 1px solid #4b4b4b;
 }
-.company-table-image {
+.company-table-rank-image {
   width: 3.2rem;
   height: 3.2rem;
   border-radius: 2rem;
   background-size: cover;
   margin: 0 0.75rem 0 2.4rem;
 }
-.company-table-name {
+.company-tabl-ranke-name {
   font-size: 1.4rem;
   font-weight: 500;
   color: #ffffff;
 }
-.body-item1,
-.body-item2,
-.body-item3,
-.body-item4,
-.body-item5,
-.body-item6 {
+.body-rank-item1,
+.body-rank-item2,
+.body-rank-item3,
+.body-rank-item4,
+.body-rank-item5,
+.body-rank-item6 {
   justify-content: center;
   display: flex;
   align-items: center;
   text-align: center;
   color: #d8d8d8;
 }
-.body-item1,
-.body-item2 {
+.body-rank-item1,
+.body-rank-item2 {
   justify-content: left;
   overflow: hidden;
   /* text-overflow: ellipsis; */
   text-align: left;
 }
-.body-item2-desc {
+.body-rank-item2-desc {
   padding: 0 1.5rem;
   height: 3.2rem;
   /* white-space: nowrap; */

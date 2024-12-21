@@ -12,8 +12,9 @@ function CompanyTableBody({ company, index, isLast, isMyCompany }) {
     actualInvest,
     revenue,
     employeesCount,
+    rank,
   } = company;
-  const bodyClassName = `${isMyCompany ? 'company-table-body-my' : 'company-table-body'} ${isLast ? '' : 'underline'}`;
+  const bodyClassName = `${isMyCompany ? 'company-table-rank-body-my' : 'company-table-rank-body'} ${isLast ? '' : 'underline'}`;
   // 억단위로 바꾸기
   function convertNum(num) {
     const newNum = Math.round((num / 100000000) * 10) / 10;
@@ -22,37 +23,39 @@ function CompanyTableBody({ company, index, isLast, isMyCompany }) {
 
   return (
     <div className={bodyClassName}>
-      <div className="body-item1">
+      <div className="body-rank-item0">{`${rank}위`}</div>
+      <div className="body-rank-item1">
         <div
-          className="company-table-image"
+          className="company-table-rank-image"
           style={{
             backgroundImage: `url(${imageUrl})`,
           }}
         ></div>
-        <div className="company-table-name">{name}</div>
+        <div className="company-table-rank-name">{name}</div>
       </div>
-      <div className="body-item2">
+      <div className="body-rank-item2">
         <div className="body-item2-desc">{description}</div>
       </div>
-      <div className="body-item3">{setCategoryEngToKor(category)}</div>
-      <div className="body-item4">{`${convertNum(actualInvest)}억 원`}</div>
-      <div className="body-item5">{`${convertNum(revenue)}억 원`}</div>
-      <div className="body-item6">{`${employeesCount}명`}</div>
+      <div className="body-rank-item3">{setCategoryEngToKor(category)}</div>
+      <div className="body-rank-item4">{`${convertNum(actualInvest)}억 원`}</div>
+      <div className="body-rank-item5">{`${convertNum(revenue)}억 원`}</div>
+      <div className="body-rank-item6">{`${employeesCount}명`}</div>
     </div>
   );
 }
 
 export default function CompanyTableRank({ companies, myCompanyId }) {
   return (
-    <div className="company-table">
-      <div className="company-table-title">기업 순위 확인하기</div>
-      <div className="company-table-header">
-        <div className="header-item1">기업 명</div>
-        <div className="header-item2">기업 소개</div>
-        <div className="header-item3">카테고리</div>
-        <div className="header-item4">누적 투자 금액</div>
-        <div className="header-item5">매출액</div>
-        <div className="header-item6">고용 인원</div>
+    <div className="company-table-rank">
+      <div className="company-table-rank-title">기업 순위 확인하기</div>
+      <div className="company-table-rank-header">
+        <div className="header-rank-item0">순위</div>
+        <div className="header-rank-item1">기업 명</div>
+        <div className="header-rank-item2">기업 소개</div>
+        <div className="header-rank-item3">카테고리</div>
+        <div className="header-rank-item4">누적 투자 금액</div>
+        <div className="header-rank-item5">매출액</div>
+        <div className="header-rank-item6">고용 인원</div>
       </div>
       {companies.map((company, index) => {
         return (

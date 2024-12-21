@@ -13,15 +13,20 @@ import { useEffect, useState } from 'react';
 function MyComparisionResultPage() {
   const location = useLocation();
   const handleInvestBtnClick = () => {};
-  const [rankCompanies, setRankCompanies] = useState([]);
+  const [rankCompareCompanies, setRankCompareCompanies] = useState([]);
 
-  const handleLoadCompanyRank = async () => {
-    const reqCompanies = await getCompanyRank(location.state.myCompany.id);
-    setRankCompanies(reqCompanies);
+  const handleLoadCompanyRank = async orderBy => {
+    const { myCompanyIdx, rankCompanies } = await getCompanyRank(
+      location.state.myCompany.id,
+      orderBy,
+    );
+    console.log(myCompanyIdx);
+    console.log(rankCompanies);
+    setRankCompareCompanies(rankCompanies);
   };
 
   useEffect(() => {
-    handleLoadCompanyRank();
+    handleLoadCompanyRank({ orderBy: 'highestSales' });
   }, []);
 
   return (
@@ -38,7 +43,7 @@ function MyComparisionResultPage() {
           myCompanyId={location.state.myCompany.id}
         />
         <CompanyTableRank
-          companies={rankCompanies}
+          companies={rankCompareCompanies}
           myCompanyId={location.state.myCompany.id}
         />
         <div className="button-wrapper">
