@@ -1,0 +1,11 @@
+/* 조형민 */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 2.4rem 16rem;
+}
+h1 {
+  color: #ffffff;
+}

@@ -1,0 +1,52 @@
+/* 조형민 */
+.my-company-title {
+  height: 4rem;
+  font-size: 2rem;
+  margin-top: 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.company-box {
+  height: 30rem;
+  background-color: #212121;
+  display: flex;
+  margin: 1.6rem 0 2.4rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.4rem;
+  position: relative;
+}
+.selection-cancel-button {
+  font-size: 1.6rem;
+  color: #d8d8d8;
+  font-weight: 400;
+  text-decoration: underline;
+  cursor: pointer;
+  position: absolute;
+  right: 1.6rem;
+  top: 1.6rem;
+}
+.add-button-widget {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+.add-button-widget > span {
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+.add-button-widget:hover {
+  opacity: 0.5;
+}
+.plus-icon {
+  width: 4.8rem;
+  height: 4.8rem;
+  background-color: #d8d8d8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3rem;
+  margin-bottom: 1.6rem;
+}

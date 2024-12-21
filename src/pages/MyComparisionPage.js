@@ -3,16 +3,14 @@
 import Container from '../components/Container';
 import Header from '../components/HearderJHM';
 import './MyComparisionPage.css';
-import icPlus from '../assets/images/ic_plus.png';
-import icRestart from '../assets/images/ic_restart.png';
-import { Link } from 'react-router-dom';
-import CompanyWidget from '../components/CompanyWidget';
+import { Link, useNavigate } from 'react-router-dom';
 import { useRef, useState } from 'react';
 import SelectMyCompanyModal from '../components/SelectMyCompanyModal';
-import ComparisionCompanyWidget from '../components/ComparisionCompanyWidget';
 import SelectComparisionCompanyModal from '../components/SelectComparisionCompanyModal';
 import { updateUser } from '../apis/updateUser';
 import { updateCompany } from '../apis/updateCompany';
+import MyCompanyBox from '../components/MyCompanyBox';
+import CompareCompanyBox from '../components/CompareCompanyBox';
 
 // 현재 사용자 지정
 const INITIAL_USER_ID = 'fca6ef85-02ba-4868-a7b7-4f49ed16e881';
@@ -24,9 +22,9 @@ function MyComparisionPage() {
   const [popComparisionModal, setPopComparisionModal] = useState(false);
   const modalBackground = useRef();
   const modalComparisionBackground = useRef();
+  const navigate = useNavigate();
 
-  const btnCompareCompanyClass = `primary-round-button ${compareCompanies.length > 0 ? '' : 'disable'}`;
-  const btnAddCompareCompanyClass = `primary-round-button-small ${compareCompanies.length < 5 ? '' : 'disable'}`;
+  const btnCompareCompanyClass = `primary-round-button ${myCompany && compareCompanies.length > 0 ? '' : 'disable'}`;
 
   // 모달 팝업 시 스크롤 막기
   if (popComparisionModal || popMyModal) {
@@ -108,6 +106,15 @@ function MyComparisionPage() {
       return [...prevValues.slice(0, idx), ...prevValues.slice(idx + 1)];
     });
   };
+  // 기업 비교하기 클릭
+  const handleDoCompareClick = () => {
+    if (!(myCompany && compareCompanies.length > 0)) return;
+    const sumCompanies = [...compareCompanies, myCompany];
+    sumCompanies.sort((a, b) => b.actualInvest - a.actualInvest);
+    navigate('/my-comparision/result', {
+      state: { myCompany: myCompany, compareCompanies: sumCompanies },
+    });
+  };
 
   return (
     <div className="modal-wrapper">
@@ -134,76 +141,28 @@ function MyComparisionPage() {
       <div className="wrapper">
         <Header />
         <Container>
-          <div className="select-my-company">
-            <div className="my-company-title">
-              나의 기업을 선택해 주세요!
-              {(myCompany || compareCompanies.length !== 0) && (
-                <div
-                  className="primary-round-button-small"
-                  onClick={handleResetClick}
-                >
-                  <img src={icRestart} alt="초기화" width="24px" />
-                  전체 초기화
-                </div>
-              )}
-            </div>
-            <div className="company-box">
-              {myCompany && (
-                <div
-                  className="selection-cancel-button"
-                  onClick={handleCancelClick}
-                >
-                  선택 취소
-                </div>
-              )}
-              {myCompany ? (
-                <CompanyWidget company={myCompany} />
-              ) : (
-                <div className="add-button-widget" onClick={handleAddMyClick}>
-                  <div className="plus-icon">
-                    <img src={icPlus} alt="나의 기업선택" width="20px" />
-                  </div>
-                  <span>기업 추가</span>
-                </div>
-              )}
-            </div>
-          </div>
+          <MyCompanyBox
+            myCompany={myCompany}
+            compareCompanies={compareCompanies}
+            onResetClick={handleResetClick}
+            onCancelClick={handleCancelClick}
+            onAddMyClick={handleAddMyClick}
+            isResult={false}
+          />
           {(myCompany || compareCompanies.length > 0) && (
-            <div className="select-comparision-company">
-              <div className="comparision-company-title">
-                <div>
-                  <span>어떤 기업이 궁금하세요?</span>
-                  <span className="select-comparision-company-max">
-                    (최대 5개)
-                  </span>
-                </div>
-                <div
-                  className={btnAddCompareCompanyClass}
-                  onClick={handleAddComparisionClick}
-                >
-                  기업 추가하기
-                </div>
-              </div>
-              <div className="company-box-comparision">
-                {compareCompanies.map((company, index) => {
-                  return (
-                    <ComparisionCompanyWidget
-                      key={company.name}
-                      company={company}
-                      index={index}
-                      onDelete={handleDeleteComparisionClick}
-                    />
-                  );
-                })}
-              </div>
-            </div>
+            <CompareCompanyBox
+              compareCompanies={compareCompanies}
+              onAddComparisionClick={handleAddComparisionClick}
+              onDeleteClick={handleDeleteComparisionClick}
+            />
           )}
           <div className="button-wrapper">
-            {/* <Link to="my-comparision/result"> */}
-            <div className={`${btnCompareCompanyClass} "last"`}>
+            <div
+              className={`${btnCompareCompanyClass} "last"`}
+              onClick={handleDoCompareClick}
+            >
               기업 비교하기
             </div>
-            {/* </Link> */}
           </div>
         </Container>
       </div>

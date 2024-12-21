@@ -1,10 +1,10 @@
 // 조형민
 
 import setCategoryEngToKor from '../utils/setCategoryEngToKor';
-import './CompanyListWidget.css';
+import './CompanyWidgetHor.css';
 import icCheck from '../assets/images/ic_check.png';
 
-export default function CompanyListWidget({
+export default function CompanyWidgetHor({
   company,
   onButtonClick,
   onComparisionButtionClick,
