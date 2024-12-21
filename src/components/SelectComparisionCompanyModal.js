@@ -5,7 +5,7 @@ import icDelete from '../assets/images/ic_delete.png';
 import icDeleteCircleSmall from '../assets/images/ic_delete_circle_small.png';
 import icSearch from '../assets/images/ic_search.png';
 import './SelectComparisionCompanyModal.css';
-import CompanyListWidget from './CompanyListWidget';
+import CompanyWidgetHor from './CompanytWidgetHor';
 import { getCompaniesModal } from '../apis/getComapniesModal';
 import AlertModal from './AlertModal';
 
@@ -148,7 +148,7 @@ export default function SelectComparisionCompanyModal({
           <div className="latest-selected-companies-list">
             {selectedCompanies.map((company, index) => {
               return (
-                <CompanyListWidget
+                <CompanyWidgetHor
                   key={company.id}
                   company={company}
                   onButtonClick={handleButtonClick}
@@ -166,7 +166,7 @@ export default function SelectComparisionCompanyModal({
             {searchCompanies.map((company, index) => {
               const btnStatus = `${selectedCompanies.some(el => el.id === company.id) ? 'selectDone' : 'select'}`;
               return (
-                <CompanyListWidget
+                <CompanyWidgetHor
                   key={company.id}
                   company={company}
                   onButtonClick={handleButtonClick}

@@ -13,8 +13,7 @@
   align-items: center;
   background-color: #000000cc;
 }
-.modal-content,
-.modal-content-alert {
+.modal-content {
   max-height: calc(100vh - 2rem);
   overflow-y: auto;
   position: fixed;
@@ -26,17 +25,7 @@
   border-radius: 1.6rem;
   background-color: #212121;
 }
-.modal-content-alert {
-  font-size: 1.5rem;
-  font-weight: 400;
-  color: #ffffff;
-  text-align: center;
-}
-.modal-content-alert-text {
-  margin: 0.8rem 0 3.2rem;
-}
-.modal-content.hide,
-.modal-content-alert.hide {
+.modal-content.hide {
   display: none;
 }
 .modal-close-icon-wrapper {
