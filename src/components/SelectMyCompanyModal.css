@@ -12,7 +12,8 @@
   align-items: center;
   background-color: #000000cc;
 }
-.modal-content {
+.modal-content,
+.modal-content-alert {
   max-height: calc(100vh - 2rem);
   overflow-y: auto;
   position: fixed;
@@ -23,6 +24,23 @@
   padding: 2.4rem;
   border-radius: 1.6rem;
   background-color: #212121;
+}
+.modal-content-alert {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #ffffff;
+  text-align: center;
+}
+.modal-content-alert-text {
+  margin: 0.8rem 0 3.2rem;
+}
+.modal-content.hide,
+.modal-content-alert.hide {
+  display: none;
+}
+.modal-close-icon-wrapper {
+  display: flex;
+  justify-content: right;
 }
 .modal-content-header {
   height: 3.2rem;
