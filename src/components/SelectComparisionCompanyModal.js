@@ -179,6 +179,9 @@ export default function SelectComparisionCompanyModal({
           </div>
         </div>
         <div className="button-wrapper done">
+          <div className="primary-round-button-outline" onClick={onCloseClick}>
+            취소
+          </div>
           <div className={btnSelectDoneClass} onClick={handleSaveClick}>
             선택완료
           </div>
