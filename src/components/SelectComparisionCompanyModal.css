@@ -92,4 +92,8 @@
 .button-wrapper.done {
   margin-top: 3rem;
   color: #ffffff;
+  display: flex;
+}
+.button-wrapper.done > .primary-round-button-outline {
+  margin-right: 1.6rem;
 }
