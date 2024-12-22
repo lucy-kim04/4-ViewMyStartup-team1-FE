@@ -7,8 +7,9 @@
   background-color: #333333;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   position: relative;
+  padding-top: 3.2rem;
 }
 .ic-minus {
   position: absolute;
