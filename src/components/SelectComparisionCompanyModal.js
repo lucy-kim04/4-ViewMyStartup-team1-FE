@@ -6,7 +6,7 @@ import icDeleteCircleSmall from '../assets/images/ic_delete_circle_small.png';
 import icSearch from '../assets/images/ic_search.png';
 import './SelectComparisionCompanyModal.css';
 import CompanyWidgetHor from './CompanytWidgetHor';
-import { getCompaniesModal } from '../apis/getComapniesModal';
+import { getCompaniesModal_jhm } from '../apis/getComapniesModal_jhm.js';
 import AlertModal from './AlertModal';
 
 export default function SelectComparisionCompanyModal({
@@ -85,7 +85,7 @@ export default function SelectComparisionCompanyModal({
     let result;
     try {
       setLoadingError(null);
-      result = await getCompaniesModal(options);
+      result = await getCompaniesModal_jhm(options);
       if (!result.companies && result.companies.length === 0) return;
     } catch (error) {
       setLoadingError(error);

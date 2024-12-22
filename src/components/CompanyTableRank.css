@@ -23,12 +23,12 @@
 }
 .header-rank-item0,
 .body-rank-item0 {
+  min-width: 6.4rem;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-grow: 0.5;
   flex-basis: 0;
-  min-width: 0.64rem;
   text-align: center;
 }
 .header-rank-item1,
@@ -73,17 +73,29 @@
 .company-table-rank-body-my.underline {
   border-bottom: 1px solid #4b4b4b;
 }
+.body-rank-item1-wrapper {
+  display: inline-flex;
+  margin: 0 2.4rem;
+  align-items: center;
+}
 .company-table-rank-image {
+  min-width: 3.2rem;
   width: 3.2rem;
   height: 3.2rem;
   border-radius: 2rem;
   background-size: cover;
-  margin: 0 0.75rem 0 2.4rem;
+  margin-right: 0.75rem;
 }
-.company-tabl-ranke-name {
+.company-table-rank-name {
   font-size: 1.4rem;
   font-weight: 500;
   color: #ffffff;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: start;
+  -webkit-box-pack: end;
+  overflow: hidden;
 }
 .body-rank-item1,
 .body-rank-item2,

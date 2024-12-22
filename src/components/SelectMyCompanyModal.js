@@ -6,8 +6,8 @@ import icDeleteCircleSmall from '../assets/images/ic_delete_circle_small.png';
 import icSearch from '../assets/images/ic_search.png';
 import './SelectMyCompanyModal.css';
 import CompanyWidgetHor from './CompanytWidgetHor';
-import { getLatestSelections } from '../apis/getLatestSelections';
-import { getCompaniesModal } from '../apis/getComapniesModal';
+import { getLatestSelections_jhm } from '../apis/getLatestSelections_jhm.js';
+import { getCompaniesModal_jhm } from '../apis/getComapniesModal_jhm.js';
 import AlertModal from './AlertModal';
 
 // 현재 사용자 지정
@@ -81,7 +81,7 @@ export default function SelectMyCompanyModal({
     let userSelections;
     try {
       setLoadingError(null);
-      userSelections = await getLatestSelections(INITIAL_USER_ID);
+      userSelections = await getLatestSelections_jhm(INITIAL_USER_ID);
       if (!userSelections && userSelections.length === 0) return;
     } catch (error) {
       setLoadingError(error);
@@ -93,7 +93,7 @@ export default function SelectMyCompanyModal({
     let result;
     try {
       setLoadingError(null);
-      result = await getCompaniesModal(options);
+      result = await getCompaniesModal_jhm(options);
       if (!result.companies && result.companies.length === 0) return;
     } catch (error) {
       setLoadingError(error);

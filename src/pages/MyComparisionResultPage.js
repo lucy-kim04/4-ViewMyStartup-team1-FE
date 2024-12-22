@@ -7,7 +7,7 @@ import MyCompanyBox from '../components/MyCompanyBox';
 import './MyComparisionResultPage.css';
 import CompanyTableResult from '../components/CompanyTableResult';
 import CompanyTableRank from '../components/CompanyTableRank';
-import { getCompanyRank } from '../../src/apis/getCompanyRank';
+import { getCompanyRank_jhm } from '../../src/apis/getCompanyRank_jhm';
 import { useEffect, useState } from 'react';
 
 function MyComparisionResultPage() {
@@ -16,7 +16,7 @@ function MyComparisionResultPage() {
   const [rankCompareCompanies, setRankCompareCompanies] = useState([]);
 
   const handleLoadCompanyRank = async orderBy => {
-    const rankCompanies = await getCompanyRank(
+    const rankCompanies = await getCompanyRank_jhm(
       location.state.myCompany.id,
       orderBy,
     );

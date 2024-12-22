@@ -22,13 +22,15 @@ function CompanyTableBody({ company, index, isLast, isMyCompany }) {
   return (
     <div className={bodyClassName}>
       <div className="body-item1">
-        <div
-          className="company-table-image"
-          style={{
-            backgroundImage: `url(${imageUrl})`,
-          }}
-        ></div>
-        <div className="company-table-name">{name}</div>
+        <div className="body-item1-wrapper">
+          <div
+            className="company-table-image"
+            style={{
+              backgroundImage: `url(${imageUrl})`,
+            }}
+          ></div>
+          <div className="company-table-name">{name}</div>
+        </div>
       </div>
       <div className="body-item2">
         <div className="body-item2-desc">{description}</div>

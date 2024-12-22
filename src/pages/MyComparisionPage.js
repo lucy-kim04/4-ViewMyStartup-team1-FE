@@ -7,8 +7,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useRef, useState } from 'react';
 import SelectMyCompanyModal from '../components/SelectMyCompanyModal';
 import SelectComparisionCompanyModal from '../components/SelectComparisionCompanyModal';
-import { updateUser } from '../apis/updateUser';
-import { updateCompany } from '../apis/updateCompany';
+import { updateUser_jhm } from '../apis/updateUser_jhm';
+import { updateCompany_jhm } from '../apis/updateCompany_jhm';
 import MyCompanyBox from '../components/MyCompanyBox';
 import CompareCompanyBox from '../components/CompareCompanyBox';
 
@@ -79,11 +79,11 @@ function MyComparisionPage() {
     noUpdateUser,
   ) => {
     if (!noUpdateUser) {
-      await updateUser(INITIAL_USER_ID, {
+      await updateUser_jhm(INITIAL_USER_ID, {
         latestSelectedCompanies: newSelections,
       });
     }
-    await updateCompany(selectedCompany.id, {
+    await updateCompany_jhm(selectedCompany.id, {
       mySelectionCount: Number(selectedCompany.mySelectionCount) + 1,
     });
     setMyCompany(selectedCompany);
@@ -93,7 +93,7 @@ function MyComparisionPage() {
   // 모달에서 compareSelectionCount를 1씩 증가시킨 상태이므로 받은 값 그대로 DB저장
   const handleSaveComparisionClick = selectedCompanies => {
     for (let i = 0; i < selectedCompanies.length; i++) {
-      updateCompany(selectedCompanies[i].id, {
+      updateCompany_jhm(selectedCompanies[i].id, {
         compareSelectionCount: selectedCompanies[i].compareSelectionCount,
       });
     }
