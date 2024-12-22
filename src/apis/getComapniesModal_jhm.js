@@ -9,6 +9,6 @@ export const getCompaniesModal_jhm = async function ({
   searchString = '',
 }) {
   const query = `orderBy=${orderBy}&skip=${skip}&searchString=${searchString}&limit=${limit}`;
-  const res = await axios.get(`/api/companies?${query}`);
+  const res = await axios.get(`/api/jhm/companies?${query}`);
   return res.data;
 };

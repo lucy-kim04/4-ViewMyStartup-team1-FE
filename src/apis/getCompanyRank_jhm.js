@@ -8,7 +8,7 @@ export const getCompanyRank_jhm = async function (
   orderBy = 'highestSales',
 ) {
   const res = await axios.get(
-    `/api/companies/${companyId}/rank?orderBy=${orderBy}`,
+    `/api/jhm/companies/${companyId}/rank?orderBy=${orderBy}`,
   );
   return res.data;
 };
