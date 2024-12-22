@@ -14,6 +14,7 @@ function MyComparisionResultPage() {
   const location = useLocation();
   const handleInvestBtnClick = () => {};
   const [rankCompareCompanies, setRankCompareCompanies] = useState([]);
+  const [order, setOrder] = useState('highestSales');
 
   const handleLoadCompanyRank = async orderBy => {
     const rankCompanies = await getCompanyRank_jhm(
@@ -22,10 +23,19 @@ function MyComparisionResultPage() {
     );
     setRankCompareCompanies(rankCompanies);
   };
+  const handleEmployeeClick = () => {
+    setOrder('mostEmployees');
+  };
+  const handleRevenueClick = () => {
+    setOrder('highestSales');
+  };
+  const handleActInvestClick = () => {
+    setOrder('highestInvestment');
+  };
 
   useEffect(() => {
-    handleLoadCompanyRank({ orderBy: 'highestSales' });
-  }, []);
+    handleLoadCompanyRank(order);
+  }, [order]);
 
   return (
     <div className="wrapper">
@@ -43,6 +53,9 @@ function MyComparisionResultPage() {
         <CompanyTableRank
           companies={rankCompareCompanies}
           myCompanyId={location.state.myCompany.id}
+          onEmployeeClick={handleEmployeeClick}
+          onRevenueClick={handleRevenueClick}
+          onActInvestClick={handleActInvestClick}
         />
         <div className="button-wrapper">
           <div className="primary-round-button" onClick={handleInvestBtnClick}>
