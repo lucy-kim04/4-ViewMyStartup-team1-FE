@@ -3,7 +3,7 @@
 import './CompanyTableRank.css';
 import setCategoryEngToKor from '../utils/setCategoryEngToKor';
 
-function CompanyTableBody({ company, index, isLast, isMyCompany }) {
+function CompanyTableBody({ company, isLast, isMyCompany }) {
   const {
     name,
     imageUrl,
@@ -46,7 +46,13 @@ function CompanyTableBody({ company, index, isLast, isMyCompany }) {
   );
 }
 
-export default function CompanyTableRank({ companies, myCompanyId }) {
+export default function CompanyTableRank({
+  companies,
+  myCompanyId,
+  onEmployeeClick,
+  onRevenueClick,
+  onActInvestClick,
+}) {
   return (
     <div className="company-table-rank">
       <div className="company-table-rank-title">기업 순위 확인하기</div>
@@ -55,9 +61,15 @@ export default function CompanyTableRank({ companies, myCompanyId }) {
         <div className="header-rank-item1">기업 명</div>
         <div className="header-rank-item2">기업 소개</div>
         <div className="header-rank-item3">카테고리</div>
-        <div className="header-rank-item4">누적 투자 금액</div>
-        <div className="header-rank-item5">매출액</div>
-        <div className="header-rank-item6">고용 인원</div>
+        <div className="header-rank-item4" onClick={onActInvestClick}>
+          누적 투자 금액
+        </div>
+        <div className="header-rank-item5" onClick={onRevenueClick}>
+          매출액
+        </div>
+        <div className="header-rank-item6" onClick={onEmployeeClick}>
+          고용 인원
+        </div>
       </div>
       {companies.map((company, index) => {
         return (

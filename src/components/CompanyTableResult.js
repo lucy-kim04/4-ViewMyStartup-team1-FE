@@ -1,8 +1,9 @@
 // 조형민
+import { useState } from 'react';
 import setCategoryEngToKor from '../utils/setCategoryEngToKor';
 import './CompanyTableResult.css';
 
-function CompanyTableBody({ company, index, isLast, isMyCompany }) {
+function CompanyTableBody({ company, isLast, isMyCompany }) {
   const {
     name,
     imageUrl,
@@ -44,6 +45,19 @@ function CompanyTableBody({ company, index, isLast, isMyCompany }) {
 }
 
 export default function CompanyTableResult({ companies, myCompanyId }) {
+  const [order, setOrder] = useState('actualInvest');
+  const sortedCompanies = companies.sort((a, b) => b[order] - a[order]);
+
+  const handleEmployeeClick = () => {
+    setOrder('employeesCount');
+  };
+  const handleRevenueClick = () => {
+    setOrder('revenue');
+  };
+  const handleActInvestClick = () => {
+    setOrder('actualInvest');
+  };
+
   return (
     <div className="company-table">
       <div className="company-table-title">비교 결과 확인하기</div>
@@ -51,11 +65,17 @@ export default function CompanyTableResult({ companies, myCompanyId }) {
         <div className="header-item1">기업 명</div>
         <div className="header-item2">기업 소개</div>
         <div className="header-item3">카테고리</div>
-        <div className="header-item4">누적 투자 금액</div>
-        <div className="header-item5">매출액</div>
-        <div className="header-item6">고용 인원</div>
+        <div className="header-item4" onClick={handleActInvestClick}>
+          누적 투자 금액
+        </div>
+        <div className="header-item5" onClick={handleRevenueClick}>
+          매출액
+        </div>
+        <div className="header-item6" onClick={handleEmployeeClick}>
+          고용 인원
+        </div>
       </div>
-      {companies.map((company, index) => {
+      {sortedCompanies.map((company, index) => {
         return (
           <CompanyTableBody
             key={company.id}
