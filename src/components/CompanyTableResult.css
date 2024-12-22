@@ -60,17 +60,29 @@
 .company-table-body-my.underline {
   border-bottom: 1px solid #4b4b4b;
 }
+.body-item1-wrapper {
+  display: inline-flex;
+  margin: 0 2.4rem;
+  align-items: center;
+}
 .company-table-image {
+  min-width: 3.2rem;
   width: 3.2rem;
   height: 3.2rem;
   border-radius: 2rem;
   background-size: cover;
-  margin: 0 0.75rem 0 2.4rem;
+  margin-right: 0.75rem;
 }
 .company-table-name {
   font-size: 1.4rem;
   font-weight: 500;
   color: #ffffff;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: start;
+  -webkit-box-pack: end;
+  overflow: hidden;
 }
 .body-item1,
 .body-item2,
@@ -89,7 +101,6 @@
   text-align: left;
 }
 .body-item2-desc {
-  overflow: hidden;
   margin: 1.5rem 1.6rem;
   text-overflow: ellipsis;
   /* white-space: nowrap; */

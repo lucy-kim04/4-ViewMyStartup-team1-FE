@@ -25,13 +25,15 @@ function CompanyTableBody({ company, index, isLast, isMyCompany }) {
     <div className={bodyClassName}>
       <div className="body-rank-item0">{`${rank}위`}</div>
       <div className="body-rank-item1">
-        <div
-          className="company-table-rank-image"
-          style={{
-            backgroundImage: `url(${imageUrl})`,
-          }}
-        ></div>
-        <div className="company-table-rank-name">{name}</div>
+        <div className="body-rank-item1-wrapper">
+          <div
+            className="company-table-rank-image"
+            style={{
+              backgroundImage: `url(${imageUrl})`,
+            }}
+          ></div>
+          <div className="company-table-rank-name">{name}</div>
+        </div>
       </div>
       <div className="body-rank-item2">
         <div className="body-rank-item2-desc">{description}</div>
