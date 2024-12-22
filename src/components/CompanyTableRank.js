@@ -34,7 +34,7 @@ function CompanyTableBody({ company, index, isLast, isMyCompany }) {
         <div className="company-table-rank-name">{name}</div>
       </div>
       <div className="body-rank-item2">
-        <div className="body-item2-desc">{description}</div>
+        <div className="body-rank-item2-desc">{description}</div>
       </div>
       <div className="body-rank-item3">{setCategoryEngToKor(category)}</div>
       <div className="body-rank-item4">{`${convertNum(actualInvest)}억 원`}</div>

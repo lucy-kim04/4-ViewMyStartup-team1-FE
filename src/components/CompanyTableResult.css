@@ -81,22 +81,22 @@
   justify-content: center;
   display: flex;
   align-items: center;
-  text-align: center;
   color: #d8d8d8;
 }
 .body-item1,
 .body-item2 {
   justify-content: left;
-  overflow: hidden;
-  /* text-overflow: ellipsis; */
   text-align: left;
 }
 .body-item2-desc {
-  padding: 0 1.5rem;
-  height: 3.2rem;
-  /* white-space: nowrap; */
   overflow: hidden;
+  margin: 1.5rem 1.6rem;
   text-overflow: ellipsis;
+  /* white-space: nowrap; */
   line-height: 1.6rem;
-  /* -webkit-line-clamp: 2; */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: start;
+  -webkit-box-pack: end;
 }

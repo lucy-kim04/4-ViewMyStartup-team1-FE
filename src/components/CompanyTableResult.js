@@ -31,12 +31,6 @@ function CompanyTableBody({ company, index, isLast, isMyCompany }) {
         <div className="company-table-name">{name}</div>
       </div>
       <div className="body-item2">
-        {/* <div className="body-item2-desc">
-          모바일 의류수거 및 리세일 서비스, 패스트패션은 대량생산과 빠른 트렌드
-          변화로 변화로 변화로 변화로 변화로변화로 변화로 변화로 변화로
-          변화로변화로 변화로 변화로 변화로 변화로변화로 변화로 변화로 변화로
-          변화로변화로 변화로 변화로 변화로 변화로
-        </div> */}
         <div className="body-item2-desc">{description}</div>
       </div>
       <div className="body-item3">{setCategoryEngToKor(category)}</div>
