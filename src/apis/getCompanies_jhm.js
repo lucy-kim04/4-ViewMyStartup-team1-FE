@@ -2,7 +2,7 @@
 
 import axios from '../lib/axios';
 
-export const getCompanies = async function () {
+export const getCompanies_jhm = async function () {
   const res = await axios.get('/startups');
   return res.data;
 };

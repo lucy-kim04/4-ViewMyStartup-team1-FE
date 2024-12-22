@@ -2,7 +2,7 @@
 
 import axios from '../lib/axios';
 
-export const getCompaniesModal = async function ({
+export const getCompaniesModal_jhm = async function ({
   orderBy = 'name',
   skip = 0,
   limit = 5,
