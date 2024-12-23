@@ -23,3 +23,6 @@ header {
 .header-nav > div {
   padding: 0 1.7rem;
 }
+.header-nav > div:hover {
+  opacity: 0.7;
+}

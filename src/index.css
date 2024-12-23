@@ -84,3 +84,8 @@ a {
 .primary-rectangle-button-outline:hover {
   opacity: 0.7;
 }
+.primary-round-button.disable:hover,
+.primary-round-button-small.disable:hover,
+.primary-rectangle-button-outline.disable:hover {
+  opacity: 1;
+}
