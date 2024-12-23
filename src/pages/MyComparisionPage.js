@@ -138,6 +138,7 @@ function MyComparisionPage() {
           myCompany={myCompany}
         />
       )}
+      <div className="header-underline"></div>
       <div className="wrapper">
         <Header />
         <Container>

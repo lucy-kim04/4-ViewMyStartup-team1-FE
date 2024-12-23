@@ -38,31 +38,37 @@ function MyComparisionResultPage() {
   }, [order]);
 
   return (
-    <div className="wrapper">
-      <Header />
-      <Container>
-        <MyCompanyBox
-          myCompany={location.state.myCompany}
-          compareCompanies={[]}
-          isResult={true}
-        />
-        <CompanyTableResult
-          companies={location.state.compareCompanies}
-          myCompanyId={location.state.myCompany.id}
-        />
-        <CompanyTableRank
-          companies={rankCompareCompanies}
-          myCompanyId={location.state.myCompany.id}
-          onEmployeeClick={handleEmployeeClick}
-          onRevenueClick={handleRevenueClick}
-          onActInvestClick={handleActInvestClick}
-        />
-        <div className="button-wrapper">
-          <div className="primary-round-button" onClick={handleInvestBtnClick}>
-            나의 기업에 투자하기
+    <div className="modal-wrapper">
+      <div className="header-underline"></div>
+      <div className="wrapper">
+        <Header />
+        <Container>
+          <MyCompanyBox
+            myCompany={location.state.myCompany}
+            compareCompanies={[]}
+            isResult={true}
+          />
+          <CompanyTableResult
+            companies={location.state.compareCompanies}
+            myCompanyId={location.state.myCompany.id}
+          />
+          <CompanyTableRank
+            companies={rankCompareCompanies}
+            myCompanyId={location.state.myCompany.id}
+            onEmployeeClick={handleEmployeeClick}
+            onRevenueClick={handleRevenueClick}
+            onActInvestClick={handleActInvestClick}
+          />
+          <div className="button-wrapper">
+            <div
+              className="primary-round-button"
+              onClick={handleInvestBtnClick}
+            >
+              나의 기업에 투자하기
+            </div>
           </div>
-        </div>
-      </Container>
+        </Container>
+      </div>
     </div>
   );
 }

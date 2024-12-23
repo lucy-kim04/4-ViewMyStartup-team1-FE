@@ -78,3 +78,9 @@ a {
   border: 1px solid #ffffff;
   color: #ffffff;
 }
+.primary-round-button:hover,
+.primary-round-button-small:hover,
+.primary-round-button-outline:hover,
+.primary-rectangle-button-outline:hover {
+  opacity: 0.7;
+}
