@@ -1,0 +1,37 @@
+.investment-status-page {
+    min-height: 100vh;
+}
+
+.investment-status {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5rem;
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+}
+
+.investment-status-table {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1.5fr 1fr 1.5fr 1fr;
+    margin-top: 2rem;
+    font-size: 1.3rem;
+    background-color: #2e2e2e;
+    color: white;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+}
+
+.investment-list {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1.5fr 1fr 1.5fr 1fr;
+    flex-direction: column;
+    background-color: #2e2e2e;
+    margin-top: 2rem;
+    color: white;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+}
