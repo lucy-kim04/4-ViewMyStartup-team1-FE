@@ -1,0 +1,24 @@
+button {
+    background-color: #4b4b4b;
+    color: white;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    border-radius: 8px;
+    border: none;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 16px;
+    gap: 0.5rem;
+}
+
+.next-btn{
+    margin-left: 0.3rem;
+}
+
+.prev-btn{
+    margin-right: 0.3rem;
+}
