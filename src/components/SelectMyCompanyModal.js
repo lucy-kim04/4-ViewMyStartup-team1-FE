@@ -9,9 +9,11 @@ import CompanyWidgetHor from './CompanytWidgetHor';
 import { getLatestSelections_jhm } from '../apis/getLatestSelections_jhm.js';
 import { getCompaniesModal_jhm } from '../apis/getComapniesModal_jhm.js';
 import AlertModal from './AlertModal';
+import Pagination from './Pagination.js';
 
 // 현재 사용자 지정
 const INITIAL_USER_ID = 'fca6ef85-02ba-4868-a7b7-4f49ed16e881';
+const ITEMSPERPAGE_COUNT = 5;
 
 export default function SelectMyCompanyModal({
   onModalClick,
@@ -30,6 +32,8 @@ export default function SelectMyCompanyModal({
   const [isShowAlert, setIsShowAlert] = useState(false);
   const [alertText, setAlertText] = useState('');
   const formRef = useRef();
+  const [searchText, setSearchText] = useState('');
+  const [page, setPage] = useState(1);
 
   const modalClassName = `modal-content ${isShowAlert ? 'hide' : ''}`;
   const handleChange = e => {
@@ -38,16 +42,23 @@ export default function SelectMyCompanyModal({
   const handleSubmit = e => {
     e.preventDefault();
     setInputValue(e.target.search.value);
-    handleLoadSearchCompanies({ searchString: inputValue, limit: 20 });
+    setSearchText(e.target.search.value);
+    handleLoadSearchCompanies({
+      searchString: inputValue,
+      limit: ITEMSPERPAGE_COUNT,
+    });
   };
   const handleSearchClick = () => {
     if (!formRef) return;
     setInputValue(formRef.current.search.value);
-    handleLoadSearchCompanies({ searchString: inputValue, limit: 20 });
+    handleLoadSearchCompanies({
+      searchString: inputValue,
+      limit: ITEMSPERPAGE_COUNT,
+    });
   };
   const handleClearClick = () => {
     setInputValue('');
-    handleLoadSearchCompanies({ searchString: '', limit: 20 });
+    handleLoadSearchCompanies({ searchString: '', limit: ITEMSPERPAGE_COUNT });
   };
   // 기업 목록에 있는 선택하기 버튼 클릭
   const handleButtonClick = selectedCompany => {
@@ -102,13 +113,16 @@ export default function SelectMyCompanyModal({
     setSearchCount(result.totalCount);
     setSearchCompanies(result.companies);
   };
-
   useEffect(() => {
     handleLoadLatestSelections();
   }, []);
   useEffect(() => {
-    handleLoadSearchCompanies({ searchString: inputValue, limit: 20 });
-  }, []);
+    handleLoadSearchCompanies({
+      searchString: inputValue,
+      limit: ITEMSPERPAGE_COUNT,
+      skip: (page - 1) * ITEMSPERPAGE_COUNT,
+    });
+  }, [searchText, page]);
 
   return (
     <div
@@ -189,6 +203,12 @@ export default function SelectMyCompanyModal({
             })}
           </div>
         </div>
+        <Pagination
+          currentPage={page}
+          onPageChange={setPage}
+          totalItems={searchCount}
+          itemsPerPage={ITEMSPERPAGE_COUNT}
+        />
       </div>
       <AlertModal
         text={alertText}

@@ -8,6 +8,9 @@ import './SelectComparisionCompanyModal.css';
 import CompanyWidgetHor from './CompanytWidgetHor';
 import { getCompaniesModal_jhm } from '../apis/getComapniesModal_jhm.js';
 import AlertModal from './AlertModal';
+import Pagination from './Pagination.js';
+
+const ITEMSPERPAGE_COUNT = 5;
 
 export default function SelectComparisionCompanyModal({
   onModalClick,
@@ -25,6 +28,8 @@ export default function SelectComparisionCompanyModal({
   const [isShowAlert, setIsShowAlert] = useState(false);
   const [alertText, setAlertText] = useState('');
   const formRef = useRef();
+  const [searchText, setSearchText] = useState('');
+  const [page, setPage] = useState(1);
 
   const modalClassName = `modal-comparision-content ${isShowAlert ? 'hide' : ''}`;
   const btnSelectDoneClass = `primary-round-button ${selectedCompanies.length > 0 ? '' : 'disable'}`;
@@ -35,16 +40,23 @@ export default function SelectComparisionCompanyModal({
   const handleSubmit = e => {
     e.preventDefault();
     setInputValue(inputValue);
-    handleLoadSearchCompanies({ searchString: inputValue, limit: 20 });
+    setSearchText(inputValue);
+    handleLoadSearchCompanies({
+      searchString: inputValue,
+      limit: ITEMSPERPAGE_COUNT,
+    });
   };
   const handleSearchClick = () => {
     if (!formRef) return;
     setInputValue(formRef.current.search.value);
-    handleLoadSearchCompanies({ searchString: inputValue, limit: 20 });
+    handleLoadSearchCompanies({
+      searchString: inputValue,
+      limit: ITEMSPERPAGE_COUNT,
+    });
   };
   const handleClearClick = () => {
     setInputValue('');
-    handleLoadSearchCompanies({ searchString: '', limit: 20 });
+    handleLoadSearchCompanies({ searchString: '', limit: ITEMSPERPAGE_COUNT });
   };
   // 기업 목록에 있는 버튼 클릭(선택하기, 선택됨, 선택해제)
   const handleButtonClick = (btnStatus, company, index) => {
@@ -98,8 +110,12 @@ export default function SelectComparisionCompanyModal({
   }, [selectedCompanies]);
 
   useEffect(() => {
-    handleLoadSearchCompanies({ searchString: inputValue, limit: 20 });
-  }, []);
+    handleLoadSearchCompanies({
+      searchString: inputValue,
+      limit: ITEMSPERPAGE_COUNT,
+      skip: (page - 1) * ITEMSPERPAGE_COUNT,
+    });
+  }, [searchText, page]);
   return (
     <div
       className="modal-comparision-background"
@@ -179,6 +195,12 @@ export default function SelectComparisionCompanyModal({
             })}
           </div>
         </div>
+        <Pagination
+          currentPage={page}
+          onPageChange={setPage}
+          totalItems={searchCount}
+          itemsPerPage={ITEMSPERPAGE_COUNT}
+        />
         <div className="button-wrapper done">
           <div className="primary-round-button-outline" onClick={onCloseClick}>
             취소
@@ -188,6 +210,7 @@ export default function SelectComparisionCompanyModal({
           </div>
         </div>
       </div>
+
       <AlertModal
         text={alertText}
         isShow={isShowAlert}
