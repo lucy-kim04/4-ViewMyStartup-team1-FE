@@ -1,0 +1,85 @@
+.company-investment-section {
+  width: 100%;
+  max-width: 120rem;
+  margin-top: 2rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+.table-title {
+  color: #ffffff;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+.investment-sum {
+  color: #ffffff;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.data-table thead tr {
+  border-bottom: 2rem solid #131313;
+}
+.data-table th {
+  padding: 1.5rem;
+  text-align: left;
+  background-color: #2e2e2e;
+  color: #ffffff;
+  font-weight: bold;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+.data-table tbody tr {
+  border-bottom: 1px solid #4b4b4b;
+}
+
+.data-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.data-table td {
+  background-color: #212121;
+  padding: 1.5rem;
+  color: #d8d8d8;
+}
+.data-table tr:hover {
+  background-color: #eee;
+}
+.data-table th:nth-child(1),
+.data-table td:nth-child(1) {
+  width: 8%; /* 투자자 이름 */
+  text-align: center;
+}
+
+.data-table th:nth-child(2),
+.data-table td:nth-child(2) {
+  width: 8%; /* 순위 */
+  text-align: center;
+}
+
+.data-table th:nth-child(3),
+.data-table td:nth-child(3) {
+  width: 8%; /* 투자금액 */
+  text-align: center;
+}
+
+.data-table th:nth-child(4),
+.data-table td:nth-child(4) {
+  width: 70%; /* 투자 코멘트 */
+}
+
+.data-table th:nth-child(5),
+.data-table td:nth-child(5) {
+  width: 6%; /* ... */
+  text-align: center;
+}
+.more-button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  color: #eee;
+}
