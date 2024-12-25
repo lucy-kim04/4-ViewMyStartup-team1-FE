@@ -24,7 +24,8 @@ export default function SelectMyCompanyModal({
   const [latestSelections, setLatestSelections] = useState([]);
   const [searchCompanies, setSearchCompanies] = useState([]);
   const [searchCount, setSearchCount] = useState();
-  const [loadingError, setLoadingError] = useState(null);
+  const [selectionLoadingError, setSelectionLoadingError] = useState(null);
+  const [searchLoadingError, setSearchLoadingError] = useState(null);
   const [inputValue, setInputValue] = useState('');
   const [isShowAlert, setIsShowAlert] = useState(false);
   const [alertText, setAlertText] = useState('');
@@ -80,11 +81,11 @@ export default function SelectMyCompanyModal({
   const handleLoadLatestSelections = async () => {
     let userSelections;
     try {
-      setLoadingError(null);
+      setSelectionLoadingError(null);
       userSelections = await getLatestSelections_jhm(INITIAL_USER_ID);
       if (!userSelections && userSelections.length === 0) return;
     } catch (error) {
-      setLoadingError(error);
+      setSelectionLoadingError(error);
     }
     setLatestSelections(userSelections);
   };
@@ -92,11 +93,11 @@ export default function SelectMyCompanyModal({
   const handleLoadSearchCompanies = async options => {
     let result;
     try {
-      setLoadingError(null);
+      setSearchLoadingError(null);
       result = await getCompaniesModal_jhm(options);
       if (!result.companies && result.companies.length === 0) return;
     } catch (error) {
-      setLoadingError(error);
+      setSearchLoadingError(error);
     }
     setSearchCount(result.totalCount);
     setSearchCompanies(result.companies);
@@ -154,6 +155,9 @@ export default function SelectMyCompanyModal({
           <div className="latest-selected-companies-title">
             {`최근 선택 기업 (${latestSelections.length})`}
           </div>
+          {selectionLoadingError?.message && (
+            <span>{selectionLoadingError.message}</span>
+          )}
           <div className="latest-selected-companies-list">
             {latestSelections.map(company => {
               return (
@@ -169,6 +173,9 @@ export default function SelectMyCompanyModal({
         </div>
         <div className="search-result-companies">
           <div className="search-result-companies-title">{`검색 결과 (${searchCount})`}</div>
+          {searchLoadingError?.message && (
+            <span>{searchLoadingError.message}</span>
+          )}
           <div className="search-result-companies-list">
             {searchCompanies.map(company => {
               return (

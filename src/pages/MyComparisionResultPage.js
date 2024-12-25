@@ -15,12 +15,19 @@ function MyComparisionResultPage() {
   const handleInvestBtnClick = () => {};
   const [rankCompareCompanies, setRankCompareCompanies] = useState([]);
   const [order, setOrder] = useState('highestSales');
+  const [loadingError, setLoadingError] = useState(null);
 
   const handleLoadCompanyRank = async orderBy => {
-    const rankCompanies = await getCompanyRank_jhm(
-      location.state.myCompany.id,
-      orderBy,
-    );
+    let rankCompanies;
+    try {
+      setLoadingError(null);
+      rankCompanies = await getCompanyRank_jhm(
+        location.state.myCompany.id,
+        orderBy,
+      );
+    } catch (error) {
+      setLoadingError(error);
+    }
     setRankCompareCompanies(rankCompanies);
   };
   const handleEmployeeClick = () => {
@@ -52,6 +59,7 @@ function MyComparisionResultPage() {
             companies={location.state.compareCompanies}
             myCompanyId={location.state.myCompany.id}
           />
+          {loadingError?.message && <span>{loadingError.message}</span>}
           <CompanyTableRank
             companies={rankCompareCompanies}
             myCompanyId={location.state.myCompany.id}
