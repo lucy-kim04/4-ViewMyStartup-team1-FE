@@ -6,6 +6,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 .company-image {
   width: 8rem;
@@ -18,6 +19,14 @@
   font-size: 1.6rem;
   font-weight: 500;
   margin: 0.4rem 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.6rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: start;
+  -webkit-box-pack: end;
 }
 .company-widget-category {
   font-size: 1.4rem;

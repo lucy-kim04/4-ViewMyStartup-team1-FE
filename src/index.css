@@ -25,7 +25,8 @@ a {
   text-decoration: none;
 }
 .primary-round-button,
-.primary-round-button-small {
+.primary-round-button-small,
+.primary-round-button-outline {
   width: 18.3rem;
   height: 4.8rem;
   background-color: #eb5230;
@@ -37,6 +38,11 @@ a {
   font-size: 1.6rem;
   cursor: pointer;
 }
+.primary-round-button-outline {
+  border: 1px solid #eb5230;
+  background-color: #212121;
+  color: #eb5230;
+}
 .primary-round-button.disable,
 .primary-round-button-small.disable {
   background-color: #2e2e2e;
@@ -46,6 +52,9 @@ a {
 .primary-round-button-small {
   width: 13.5rem;
   height: 4rem;
+}
+.primary-round-button-small.wide {
+  width: 16.7rem;
 }
 .primary-rectangle-button-outline {
   width: 10.4rem;
@@ -63,8 +72,20 @@ a {
 .primary-rectangle-button-outline.disable {
   border: 1px solid #747474;
   color: #747474;
+  cursor: default;
 }
 .primary-rectangle-button-outline.white {
   border: 1px solid #ffffff;
   color: #ffffff;
+}
+.primary-round-button:hover,
+.primary-round-button-small:hover,
+.primary-round-button-outline:hover,
+.primary-rectangle-button-outline:hover {
+  opacity: 0.7;
+}
+.primary-round-button.disable:hover,
+.primary-round-button-small.disable:hover,
+.primary-rectangle-button-outline.disable:hover {
+  opacity: 1;
 }

@@ -1,0 +1,13 @@
+.dropdown-btn {
+    list-style: none;
+    background-color: #242424;
+    color: white;
+    padding: 0.7rem;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 0.25rem;
+    text-align: center;
+}
+
+.dropdown-menu {
+    border: 1px solid white;
+}

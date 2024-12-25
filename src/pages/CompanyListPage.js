@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom';
 import TitleAndSearch from '../components/TitleAndSearch';
 import StartupTableHead from '../components/StartupTableHead';
 import CompanyList from '../components/CompanyList';
-import { useState } from 'react';
 import { startups } from '../db/mockKem';
 
 function CompanyListPage() {

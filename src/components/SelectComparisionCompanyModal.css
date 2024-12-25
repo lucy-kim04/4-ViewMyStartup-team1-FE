@@ -25,6 +25,9 @@
   border-radius: 1.6rem;
   background-color: #212121;
 }
+.modal-comparision-content.hide {
+  display: none;
+}
 .modal-comparision-content-header {
   height: 3.2rem;
   font-size: 2rem;
@@ -85,4 +88,12 @@
 .latest-selected-companies-list > div:not(:last-child),
 .search-result-companies-list > div:not(:last-child) {
   margin-bottom: 1.2rem;
+}
+.button-wrapper.done {
+  margin-top: 3rem;
+  color: #ffffff;
+  display: flex;
+}
+.button-wrapper.done > .primary-round-button-outline {
+  margin-right: 1.6rem;
 }
