@@ -5,11 +5,14 @@ import Header from '../components/HeaderKSH';
 import Container from '../components/Container';
 import Dropdown from '../components/Dropdown';
 import { useEffect, useState } from 'react';
-import Pagination from '../components/PaginationKSH';
+import Pagination from '../components/Pagination';
 import InvestmentList from '../components/InvestmentList';
+import { fetchInvestments } from '../apis/getInvestments';
 
 function InvestmentStatusPage() {
-  const [selectedOption, setSelectedOption] = useState('');
+  const [selectedOption, setSelectedOption] = useState(
+    'View My Startup 투자 금액 높은순',
+  );
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [items, setItems] = useState([]);
@@ -30,18 +33,47 @@ function InvestmentStatusPage() {
     setCurrentPage(value);
   };
 
-  useEffect(() => {
-    const sortParam =
-      selectedOption === '실제 누적 투자 금액 높은순' ? 'desc' : 'asc';
-    fetch(
-      `http://localhost:3000/company?_page=${currentPage}&_limit=${itemsPerPage}&_sort=${sortParam}`,
-    )
-      .then(res => res.json())
-      .then(data => {
-        setItems(data);
-        setTotalItems(22);
-        console.log(data);
+  const getInvestmentData = async () => {
+    try {
+      const skip = (currentPage - 1) * itemsPerPage;
+
+      const mapping = {
+        'View My Startup 투자 금액 높은순': {
+          orderBy: 'simInvest',
+          sortOrder: 'desc',
+        },
+        'View My Startup 투자 금액 낮은순': {
+          orderBy: 'simInvest',
+          sortOrder: 'asc',
+        },
+        '실제 누적 투자 금액 높은순': {
+          orderBy: 'actualInvest',
+          sortOrder: 'desc',
+        },
+        '실제 누적 투자 금액 낮은순': {
+          orderBy: 'actualInvest',
+          sortOrder: 'asc',
+        },
+      };
+
+      const { orderBy, sortOrder } = mapping[selectedOption] || {};
+
+      const result = await fetchInvestments({
+        skip,
+        limit: itemsPerPage,
+        orderBy,
+        sortOrder,
       });
+
+      setItems(result.data);
+      setTotalItems(result.totalItems);
+    } catch (error) {
+      console.error('Failed to get investments:', error);
+    }
+  };
+
+  useEffect(() => {
+    getInvestmentData(currentPage, itemsPerPage, selectedOption);
   }, [currentPage, itemsPerPage, selectedOption]);
 
   return (
