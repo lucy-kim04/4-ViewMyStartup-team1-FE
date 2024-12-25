@@ -18,6 +18,12 @@
   color: #ffffff;
   text-align: center;
 }
+.modal-close-icon-wrapper > img {
+  cursor: pointer;
+}
+.modal-close-icon-wrapper > img:hover {
+  opacity: 0.5;
+}
 .modal-content-alert-text {
   margin: 0.8rem 0 3.2rem;
 }

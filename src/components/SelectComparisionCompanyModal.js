@@ -160,6 +160,7 @@ export default function SelectComparisionCompanyModal({
             })}
           </div>
         </div>
+        {loadingError?.message && <span>{loadingError.message}</span>}
         <div className="search-result-companies">
           <div className="search-result-companies-title">{`검색 결과 (${searchCount})`}</div>
           <div className="search-result-companies-list">

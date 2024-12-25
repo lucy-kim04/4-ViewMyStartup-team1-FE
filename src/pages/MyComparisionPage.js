@@ -20,6 +20,8 @@ function MyComparisionPage() {
   const [compareCompanies, setCompareCompanies] = useState([]);
   const [popMyModal, setPopMyModal] = useState(false);
   const [popComparisionModal, setPopComparisionModal] = useState(false);
+  const [updateUsrError, setUpdateUsrError] = useState(null);
+  const [updateCompanyError, setUpdateCompanyError] = useState(null);
   const modalBackground = useRef();
   const modalComparisionBackground = useRef();
   const navigate = useNavigate();
@@ -79,23 +81,43 @@ function MyComparisionPage() {
     noUpdateUser,
   ) => {
     if (!noUpdateUser) {
-      await updateUser_jhm(INITIAL_USER_ID, {
-        latestSelectedCompanies: newSelections,
-      });
+      // 사용자의 '최근 선택 기업' 목록을 업데이트
+      try {
+        setUpdateUsrError(null);
+        await updateUser_jhm(INITIAL_USER_ID, {
+          latestSelectedCompanies: newSelections,
+        });
+      } catch (error) {
+        setUpdateUsrError(error);
+      }
     }
-    await updateCompany_jhm(selectedCompany.id, {
-      mySelectionCount: Number(selectedCompany.mySelectionCount) + 1,
-    });
+    // 기업의 '나의 기업 선택횟수'를 업데이트(1만큼 증가)
+    try {
+      setUpdateCompanyError(null);
+      await updateCompany_jhm(selectedCompany.id, {
+        mySelectionCount: Number(selectedCompany.mySelectionCount) + 1,
+      });
+    } catch (error) {
+      setUpdateCompanyError(error);
+    }
     setMyCompany(selectedCompany);
     setPopMyModal(false);
   };
   // 비교 기업 선택 모달에서 '선택완료' 버튼 클릭
-  // 모달에서 compareSelectionCount를 1씩 증가시킨 상태이므로 받은 값 그대로 DB저장
   const handleSaveComparisionClick = selectedCompanies => {
     for (let i = 0; i < selectedCompanies.length; i++) {
-      updateCompany_jhm(selectedCompanies[i].id, {
-        compareSelectionCount: selectedCompanies[i].compareSelectionCount,
-      });
+      /** 기업의 '비교 기업 선택횟수'를 업데이트
+       * - 모달에서 compareSelectionCount를 1씩 증가시킨 상태이므로 받은 값 그대로 업데이트
+       * - 순서는 상관없으므로 속도를 최우선으로 하기 위해 반복문에서 await 하지 않음
+       */
+      try {
+        setUpdateCompanyError(null);
+        updateCompany_jhm(selectedCompanies[i].id, {
+          compareSelectionCount: selectedCompanies[i].compareSelectionCount,
+        });
+      } catch (error) {
+        setUpdateCompanyError(error);
+      }
     }
     setPopComparisionModal(false);
     setCompareCompanies(selectedCompanies);
