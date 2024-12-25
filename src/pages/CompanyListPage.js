@@ -1,4 +1,4 @@
-import Header from '../components/HearderJHM';
+import Header from '../components/HeaderKSH';
 
 function CompanyListPage() {
   return (
