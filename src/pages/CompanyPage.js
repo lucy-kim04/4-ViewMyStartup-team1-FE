@@ -1,4 +1,16 @@
+import './CompanyPage.css';
+import Header from '../components/HeaderKJY';
+import CompanyDetailInfo from '../components/CompanyDetailInfo';
+import CompanyInvestmentSection from '../components/CompanyInvestmentSection';
 function CompanyPage() {
-  return <div>기업 상세 </div>;
+  return (
+    <>
+      <Header />
+      <div className="wrapper">
+        <CompanyDetailInfo />
+        <CompanyInvestmentSection />
+      </div>
+    </>
+  );
 }
 export default CompanyPage;
