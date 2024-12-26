@@ -2,8 +2,9 @@ import { useParams } from 'react-router-dom';
 import { INVESTMENTS, COMPANIES, USERS } from '../db/companyMock';
 import './CompanyInvestmentSection.css';
 
-export default function CompanyInvestmentSection() {
+export default function CompanyInvestmentSection({ companyId }) {
   //그리드 구현용 임시 db 사용.. 도저히...
+
   const mockInvestments = [
     {
       investorName: '김투자',
