@@ -89,12 +89,16 @@ function InvestmentStatusPage() {
           />
         </div>
         <div className="investment-status-table">
-          <div className="rank">순위</div>
-          <div className="company-name">기업명</div>
-          <div className="company-intro">기업 소개</div>
-          <div className="category">카테고리</div>
-          <div className="investment-amount">View My Startup 투자 금액</div>
-          <div className="real-investment-amount">실제 투자 금액</div>
+          <div className="investment-status-rank">순위</div>
+          <div className="investment-status-company-name">기업명</div>
+          <div className="investment-status-company-description">기업 소개</div>
+          <div className="investment-status-category">카테고리</div>
+          <div className="investment-status-investment-amount">
+            View My Startup 투자 금액
+          </div>
+          <div className="investment-status-real-investment-amount">
+            실제 투자 금액
+          </div>
         </div>
         <div className="investment-list">
           <div>

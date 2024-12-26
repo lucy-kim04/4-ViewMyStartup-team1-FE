@@ -16,7 +16,7 @@ export default function KemHeader() {
           <Link to="/comparision-status">비교 현황</Link>
         </div>
         <div>
-          <Link to="/investment=status">투자 현황</Link>
+          <Link to="/investment-status">투자 현황</Link>
         </div>
       </div>
     </header>

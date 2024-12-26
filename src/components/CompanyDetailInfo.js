@@ -1,3 +1,5 @@
+// 김주영
+
 import { COMPANIES } from '../db/companyMock';
 import { useParams } from 'react-router-dom';
 import './CompanyDetailInfo.css';
