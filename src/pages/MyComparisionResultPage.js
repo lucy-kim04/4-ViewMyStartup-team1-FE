@@ -10,6 +10,15 @@ import CompanyTableRank from '../components/CompanyTableRank';
 import { getCompanyRank_jhm } from '../../src/apis/getCompanyRank_jhm';
 import { useEffect, useState } from 'react';
 
+const dropdownOptionsMap = {
+  '누적 투자 금액 높은순': 'highestInvestment',
+  '누적 투자 금액 낮은순': 'lowestInvestment',
+  '매출액 높은순': 'highestSales',
+  '매출액 낮은순': 'lowestSales',
+  '고용 인원 많은순': 'mostEmployees',
+  '고용 인원 적은순': 'fewestEmployees',
+};
+
 function MyComparisionResultPage() {
   const location = useLocation();
   const handleInvestBtnClick = () => {};
@@ -30,14 +39,8 @@ function MyComparisionResultPage() {
     }
     setRankCompareCompanies(rankCompanies);
   };
-  const handleEmployeeClick = () => {
-    setOrder('mostEmployees');
-  };
-  const handleRevenueClick = () => {
-    setOrder('highestSales');
-  };
-  const handleActInvestClick = () => {
-    setOrder('highestInvestment');
+  const handleDropdownChange = value => {
+    setOrder(dropdownOptionsMap[value]);
   };
 
   useEffect(() => {
@@ -63,9 +66,7 @@ function MyComparisionResultPage() {
           <CompanyTableRank
             companies={rankCompareCompanies}
             myCompanyId={location.state.myCompany.id}
-            onEmployeeClick={handleEmployeeClick}
-            onRevenueClick={handleRevenueClick}
-            onActInvestClick={handleActInvestClick}
+            onChange={handleDropdownChange}
           />
           <div className="button-wrapper">
             <div

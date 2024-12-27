@@ -2,6 +2,8 @@
 
 import './CompanyTableRank.css';
 import setCategoryEngToKor from '../utils/setCategoryEngToKor';
+import Dropdown from './Dropdown';
+import { useState } from 'react';
 
 function CompanyTableBody({ company, isLast, isMyCompany }) {
   const {
@@ -46,30 +48,38 @@ function CompanyTableBody({ company, isLast, isMyCompany }) {
   );
 }
 
-export default function CompanyTableRank({
-  companies,
-  myCompanyId,
-  onEmployeeClick,
-  onRevenueClick,
-  onActInvestClick,
-}) {
+export default function CompanyTableRank({ companies, myCompanyId, onChange }) {
+  const dropdownOptions = [
+    '누적 투자 금액 높은순',
+    '누적 투자 금액 낮은순',
+    '매출액 높은순',
+    '매출액 낮은순',
+    '고용 인원 많은순',
+    '고용 인원 적은순',
+  ];
+  const [dropdownValue, setDropdownValue] = useState('매출액 높은순');
+  const handleDropdownChange = value => {
+    onChange(value);
+    setDropdownValue(value);
+  };
   return (
     <div className="company-table-rank">
-      <div className="company-table-rank-title">기업 순위 확인하기</div>
+      <div className="company-table-rank-title">
+        기업 순위 확인하기
+        <Dropdown
+          options={dropdownOptions}
+          selectedValue={dropdownValue}
+          onChange={handleDropdownChange}
+        />{' '}
+      </div>
       <div className="company-table-rank-header">
         <div className="header-rank-item0">순위</div>
         <div className="header-rank-item1">기업 명</div>
         <div className="header-rank-item2">기업 소개</div>
         <div className="header-rank-item3">카테고리</div>
-        <div className="header-rank-item4" onClick={onActInvestClick}>
-          누적 투자 금액
-        </div>
-        <div className="header-rank-item5" onClick={onRevenueClick}>
-          매출액
-        </div>
-        <div className="header-rank-item6" onClick={onEmployeeClick}>
-          고용 인원
-        </div>
+        <div className="header-rank-item4">누적 투자 금액</div>
+        <div className="header-rank-item5">매출액</div>
+        <div className="header-rank-item6">고용 인원</div>
       </div>
       {companies.map((company, index) => {
         return (
