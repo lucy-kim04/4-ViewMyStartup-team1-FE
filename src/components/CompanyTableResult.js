@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import setCategoryEngToKor from '../utils/setCategoryEngToKor';
 import './CompanyTableResult.css';
+import Dropdown from './Dropdown';
 
 function CompanyTableBody({ company, isLast, isMyCompany }) {
   const {
@@ -45,36 +46,74 @@ function CompanyTableBody({ company, isLast, isMyCompany }) {
 }
 
 export default function CompanyTableResult({ companies, myCompanyId }) {
+  const dropdownOptions = [
+    '누적 투자 금액 높은순',
+    '누적 투자 금액 낮은순',
+    '매출액 높은순',
+    '매출액 낮은순',
+    '고용 인원 많은순',
+    '고용 인원 적은순',
+  ];
+  const [dropdownValue, setDropdownValue] = useState('누적 투자 금액 높은순');
   const [order, setOrder] = useState('actualInvest');
-  const sortedCompanies = companies.sort((a, b) => b[order] - a[order]);
-
-  const handleEmployeeClick = () => {
-    setOrder('employeesCount');
-  };
-  const handleRevenueClick = () => {
-    setOrder('revenue');
-  };
-  const handleActInvestClick = () => {
-    setOrder('actualInvest');
+  // const sortedCompanies = companies.sort((a, b) => b[order] - a[order]);
+  let sortedCompanies;
+  switch (order) {
+    case '누적 투자 금액 높은순':
+      sortedCompanies = companies.sort(
+        (a, b) => b.actualInvest - a.actualInvest,
+      );
+      break;
+    case '누적 투자 금액 낮은순':
+      sortedCompanies = companies.sort(
+        (a, b) => a.actualInvest - b.actualInvest,
+      );
+      break;
+    case '매출액 높은순':
+      sortedCompanies = companies.sort((a, b) => b.revenue - a.revenue);
+      break;
+    case '매출액 낮은순':
+      sortedCompanies = companies.sort((a, b) => a.revenue - b.revenue);
+      break;
+    case '고용 인원 많은순':
+      sortedCompanies = companies.sort(
+        (a, b) => b.employeesCount - a.employeesCount,
+      );
+      break;
+    case '고용 인원 적은순':
+      sortedCompanies = companies.sort(
+        (a, b) => a.employeesCount - b.employeesCount,
+      );
+      break;
+    default:
+      sortedCompanies = companies.sort(
+        (a, b) => b.actualInvest - a.actualInvest,
+      );
+  }
+  const handleDropdownChange = value => {
+    setOrder(value);
+    setDropdownValue(value);
   };
 
   return (
     <div className="company-table">
-      <div className="company-table-title">비교 결과 확인하기</div>
+      <div className="company-table-title">
+        비교 결과 확인하기
+        <Dropdown
+          options={dropdownOptions}
+          selectedValue={dropdownValue}
+          onChange={handleDropdownChange}
+        />
+      </div>
       <div className="company-table-header">
         <div className="header-item1">기업 명</div>
         <div className="header-item2">기업 소개</div>
         <div className="header-item3">카테고리</div>
-        <div className="header-item4" onClick={handleActInvestClick}>
-          누적 투자 금액
-        </div>
-        <div className="header-item5" onClick={handleRevenueClick}>
-          매출액
-        </div>
-        <div className="header-item6" onClick={handleEmployeeClick}>
-          고용 인원
-        </div>
+        <div className="header-item4">누적 투자 금액</div>
+        <div className="header-item5">매출액</div>
+        <div className="header-item6">고용 인원</div>
       </div>
+
       {sortedCompanies.map((company, index) => {
         return (
           <CompanyTableBody
