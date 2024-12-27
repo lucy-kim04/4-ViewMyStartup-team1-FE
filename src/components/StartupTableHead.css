@@ -1,0 +1,64 @@
+.table-head {
+  color: #ffffff;
+  background-color: #4b4b4b;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ranking {
+  width: 68px;
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.companyname {
+  width: 213px;
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.script {
+  width: 304px;
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.category {
+  width: 153.75px;
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.investment-amount {
+  width: 153.75px;
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.revenue {
+  width: 153.75px;
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.employee {
+  width: 153.75px;
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

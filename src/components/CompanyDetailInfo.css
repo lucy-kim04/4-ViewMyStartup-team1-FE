@@ -1,0 +1,116 @@
+/* 김주영 */
+
+.company-detail-info {
+  width: 100%;
+  max-width: 1200px; /* 최대 넓이 지정 */
+  margin: 0 auto; /* 중앙 정렬 */
+  padding: 5rem 0;
+  color: #fff;
+}
+
+.company-detail-header-title {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.company-detail-header-title img {
+  width: 4rem;
+  height: 4rem;
+  margin-right: 2rem;
+}
+.company-detail-header-title-text {
+  display: block;
+}
+.company-detail-header-title-text h1 {
+  font-size: 3rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+.company-detail-header-title-text p {
+  font-size: 2rem;
+  font-weight: 400;
+  color: #747474;
+}
+
+.metrics-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  color: #fff;
+}
+
+.metrics-row {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.metric-input {
+  flex: 1;
+  background-color: #282828;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  color: #fff;
+}
+
+.metric-title {
+  color: #ffffff;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.metric-value {
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.company-intro {
+  width: 100%;
+  background-color: #282828;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  min-height: 20rem;
+}
+.company-intro span {
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 3.5rem;
+}
+.company-intro p {
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 1.8rem;
+}
+.invest-button-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 4rem;
+}
+.invest-button {
+  background-color: #eb5230;
+  color: white;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 50rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.invest-button:hover {
+  background-color: #ff8533;
+}
+
+.divider {
+  width: 100%;
+  height: 2px;
+  margin: 2rem 0;
+  line-height: 1px;
+  border-bottom: 1px solid #282828;
+}

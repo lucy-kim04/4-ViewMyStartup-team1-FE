@@ -1,0 +1,20 @@
+/* 조형민 */
+.modal-wrapper {
+  min-height: 100vh;
+  position: relative;
+  /* min-height로 설정해야 현재 콘텐츠 전체 높이를 사용 */
+}
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 2.4rem 16rem;
+}
+/* .select-comparision-company {
+  display: inline-flex;
+} */
+.button-wrapper {
+  display: flex;
+  justify-content: center;
+}

@@ -1,0 +1,128 @@
+/* 조형민 */
+.company-table-rank {
+  margin-bottom: 4rem;
+}
+.company-table-rank-title {
+  height: 4rem;
+  font-size: 2rem;
+  margin-top: 4rem;
+  display: flex;
+  align-items: center;
+}
+.company-table-rank-header {
+  margin: 1.6rem 0;
+  height: 4rem;
+  display: flex;
+  flex-direction: row;
+  color: #ffffff;
+  background-color: #2e2e2e;
+  border-radius: 0.4rem;
+  font-size: 1.4rem;
+  font-weight: 500;
+  align-items: center;
+}
+.header-rank-item0,
+.body-rank-item0 {
+  min-width: 6.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 0.5;
+  flex-basis: 0;
+  text-align: center;
+}
+.header-rank-item1,
+.body-rank-item1 {
+  flex-grow: 1.7;
+  flex-basis: 0;
+  min-width: 15rem;
+  text-align: center;
+}
+.header-rank-item2,
+.body-rank-item2 {
+  flex-grow: 2.5;
+  flex-basis: 0;
+  min-width: 18rem;
+  text-align: center;
+}
+.header-rank-item3,
+.header-rank-item4,
+.header-rank-item5,
+.header-rank-item6,
+.body-rank-item3,
+.body-rank-item4,
+.body-rank-item5,
+.body-rank-item6 {
+  flex-grow: 1.2;
+  flex-basis: 0;
+  text-align: center;
+}
+.company-table-rank-body,
+.company-table-rank-body-my {
+  display: flex;
+  flex-direction: row;
+  height: 6.4rem;
+  border-radius: 0.4rem;
+  background-color: #212121;
+  font-size: 1.4rem;
+}
+.company-table-rank-body-my {
+  background-color: #2e2e2e;
+}
+.company-table-rank-body.underline,
+.company-table-rank-body-my.underline {
+  border-bottom: 1px solid #4b4b4b;
+}
+.body-rank-item1-wrapper {
+  display: inline-flex;
+  margin: 0 2.4rem;
+  align-items: center;
+}
+.company-table-rank-image {
+  min-width: 3.2rem;
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: 2rem;
+  background-size: cover;
+  margin-right: 0.75rem;
+}
+.company-table-rank-name {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #ffffff;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: start;
+  -webkit-box-pack: end;
+  overflow: hidden;
+}
+.body-rank-item1,
+.body-rank-item2,
+.body-rank-item3,
+.body-rank-item4,
+.body-rank-item5,
+.body-rank-item6 {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #d8d8d8;
+}
+.body-rank-item1,
+.body-rank-item2 {
+  justify-content: left;
+  text-align: left;
+}
+.body-rank-item2-desc {
+  margin: 1.5rem 1.6rem;
+  /* white-space: nowrap; */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.6rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: start;
+  -webkit-box-pack: end;
+}

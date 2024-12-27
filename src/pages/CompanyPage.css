@@ -1,0 +1,10 @@
+.wrapper {
+  width: 100%;
+}
+.divider {
+  max-width: 120rem;
+  height: 2px;
+  margin: 2rem 0;
+  line-height: 1px;
+  border-bottom: 1px solid #282828;
+}

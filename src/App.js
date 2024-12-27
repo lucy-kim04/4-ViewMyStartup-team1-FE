@@ -1,6 +1,8 @@
+// 조형민(공통)
+
 import { Routes, Route } from 'react-router-dom';
-import StartupListPage from './pages/StartupListPage';
-import StartupPage from './pages/StartupPage';
+import CompanyListPage from './pages/CompanyListPage';
+import CompanyPage from './pages/CompanyPage';
 import InvestmentStatusPage from './pages/InvestmentStatusPage';
 import ComparisionStatusPage from './pages/ComparisionStatusPage';
 import MyComparisionPage from './pages/MyComparisionPage';
@@ -9,10 +11,10 @@ import MyComparisionResultPage from './pages/MyComparisionResultPage';
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<StartupListPage />} />
-      <Route path="startups">
-        <Route index element={<StartupListPage />} />
-        <Route path=":startupId" element={<StartupPage />} />
+      <Route path="/" element={<CompanyListPage />} />
+      <Route path="companies">
+        <Route index element={<CompanyListPage />} />
+        <Route path=":companyId" element={<CompanyPage />} />
       </Route>
       <Route path="my-comparision">
         <Route index element={<MyComparisionPage />} />
