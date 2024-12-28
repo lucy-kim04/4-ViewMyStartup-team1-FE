@@ -1,3 +1,5 @@
+/* 김세환 */
+
 button {
     background-color: #4b4b4b;
     color: white;
@@ -15,10 +17,10 @@ button {
     gap: 0.5rem;
 }
 
-.next-btn{
+.next-btn {
     margin-left: 0.3rem;
 }
 
-.prev-btn{
+.prev-btn {
     margin-right: 0.3rem;
 }
