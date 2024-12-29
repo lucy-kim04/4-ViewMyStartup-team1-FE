@@ -1,14 +1,4 @@
-.investment-list {
-    display: flex;
-    flex-direction: row;
-    background-color: #2e2e2e;
-    margin-top: 2rem;
-    color: white;
-    border-radius: 0.5rem;
-    margin-top: 1rem;
-}
-
-.investment-item {
+.ksh-investment-item {
     display: grid;
     grid-template-columns: 0.5fr 1.5fr 1.5fr 1fr 1.5fr 1fr;
     align-items: center;
@@ -19,14 +9,14 @@
     border-radius: 0.5rem;
 }
 
-.company-info {
+.ksh-company-info {
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 1rem;
 }
 
-.company-info > img {
+.ksh-company-info>img {
     width: 4rem;
     height: 4rem;
     border-radius: 50%;
