@@ -23,5 +23,6 @@ module.exports = {
     'react/prop-types': 'off',
     'no-unused-vars': 'off',
     // 'arrow-parens': ['error', 'always'],
+    'arrow-parens': [true, 'ban-single-arg-parens', 'error', 'as-needed'],
   },
 };

@@ -13,7 +13,7 @@ import Pagination from './Pagination.js';
 
 // 현재 사용자 지정
 const INITIAL_USER_ID = 'fca6ef85-02ba-4868-a7b7-4f49ed16e881';
-const ITEMSPERPAGE_COUNT = 5;
+const ITEMSPERPAGE_COUNT = 3;
 
 export default function SelectMyCompanyModal({
   onModalClick,
@@ -36,10 +36,10 @@ export default function SelectMyCompanyModal({
   const [page, setPage] = useState(1);
 
   const modalClassName = `modal-content ${isShowAlert ? 'hide' : ''}`;
-  const handleChange = e => {
+  const handleChange = (e) => {
     setInputValue(e.target.value);
   };
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setInputValue(e.target.search.value);
     setSearchText(e.target.search.value);
@@ -61,15 +61,15 @@ export default function SelectMyCompanyModal({
     handleLoadSearchCompanies({ searchString: '', limit: ITEMSPERPAGE_COUNT });
   };
   // 기업 목록에 있는 선택하기 버튼 클릭
-  const handleButtonClick = selectedCompany => {
-    if (compareCompanies.some(company => company.id === selectedCompany.id)) {
+  const handleButtonClick = (selectedCompany) => {
+    if (compareCompanies.some((company) => company.id === selectedCompany.id)) {
       setAlertText('나의 기업과 비교 기업은 같을 수 없습니다.');
       setIsShowAlert(true);
       return;
     }
-    const selectionsArray = latestSelections.map(value => value.id);
+    const selectionsArray = latestSelections.map((value) => value.id);
     const noUpdateUser = selectionsArray.some(
-      value => value === selectedCompany.id,
+      (value) => value === selectedCompany.id,
     );
     // 최근 선택 항목 5개중에 선택하는 경우에는 user데이터 업데이트는 생략
     if (!noUpdateUser) {
@@ -101,7 +101,7 @@ export default function SelectMyCompanyModal({
     setLatestSelections(userSelections);
   };
 
-  const handleLoadSearchCompanies = async options => {
+  const handleLoadSearchCompanies = async (options) => {
     let result;
     try {
       setSearchLoadingError(null);
@@ -173,7 +173,7 @@ export default function SelectMyCompanyModal({
             <span>{selectionLoadingError.message}</span>
           )}
           <div className="latest-selected-companies-list">
-            {latestSelections.map(company => {
+            {latestSelections.map((company) => {
               return (
                 <CompanyWidgetHor
                   key={company.id}
@@ -191,7 +191,7 @@ export default function SelectMyCompanyModal({
             <span>{searchLoadingError.message}</span>
           )}
           <div className="search-result-companies-list">
-            {searchCompanies.map(company => {
+            {searchCompanies.map((company) => {
               return (
                 <CompanyWidgetHor
                   key={company.id}
