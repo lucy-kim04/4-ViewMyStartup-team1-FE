@@ -90,7 +90,7 @@ export default function CompanyTableResult({ companies, myCompanyId }) {
         (a, b) => b.actualInvest - a.actualInvest,
       );
   }
-  const handleDropdownChange = value => {
+  const handleDropdownChange = (value) => {
     setOrder(value);
     setDropdownValue(value);
   };
