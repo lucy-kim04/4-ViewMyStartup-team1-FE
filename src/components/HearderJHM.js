@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 export default function Header() {
   return (
-    <header className="header">
+    <header className="dkdkd">
       <Link to="/">
         <img
           className="header-img"
