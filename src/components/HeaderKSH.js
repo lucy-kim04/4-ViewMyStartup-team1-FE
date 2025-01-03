@@ -3,8 +3,9 @@
 import './HeaderKSH.css';
 import imgLogo from '../assets/images/vms_logo_2x.png';
 import { Link } from 'react-router-dom';
+import React from 'react';
 
-export default function HeaderKSH() {
+function HeaderKSH() {
   return (
     <header className="header">
       <img src={imgLogo} alt="로고" width="112px" height="40px" />
@@ -16,3 +17,5 @@ export default function HeaderKSH() {
     </header>
   );
 }
+
+export default React.memo(HeaderKSH) ;
