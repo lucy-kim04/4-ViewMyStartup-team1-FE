@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 import Pagination from '../components/Pagination';
 import InvestmentList from '../components/InvestmentList';
 import { fetchInvestments } from '../apis/getCompanies_ksh';
+import CompanyInvestmentModal from '../components/CompanyInvestmentModal';
 
 function InvestmentStatusPage() {
   const [selectedOption, setSelectedOption] = useState(
@@ -75,6 +76,7 @@ function InvestmentStatusPage() {
     <div className="investment-status-page">
       <Header />
       <Container>
+        <CompanyInvestmentModal />
         <div className="investment-status">
           <p>투자 현황</p>
           <Dropdown
