@@ -39,11 +39,11 @@ function CompanyPage() {
   return (
     <>
       <Header />
-      <div className='headerLine'></div>
+      <div className="headerLine"></div>
       {company && (
-        <div className='wrapper'>
+        <div className="wrapper">
           {company && <CompanyDetailInfo company={company} />}
-          <CompanyInvestmentSection companyId={company.id} />
+          <CompanyInvestmentSection company={company} />
           {/* <CompanyInvestmentSection companyId={company.id} /> */}
         </div>
       )}

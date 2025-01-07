@@ -11,7 +11,7 @@ import { getCompaniesModal_jhm } from '../../apis/getComapniesModal_jhm.js';
 import AlertModal from '../AlertModal.js';
 import Pagination from '../Pagination.js';
 
-const ITEMSPERPAGE_COUNT = 3;
+const ITEMSPERPAGE_COUNT = 5;
 
 export default function SelectComparisionCompanyModal({
   onModalClick,

@@ -44,7 +44,7 @@ export default function CompanyListTableRank() {
   const [companies, setCompanies] = useState([]);
   const [keyword, setKeyword] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  const [sortOption, setSortOption] = useState('revenueDesc'); // 기본 정렬을 매출액 높은 순으로 설정
+  const [sortOption, setSortOption] = useState('매출액 높은 순'); // 기본 정렬을 매출액 높은 순으로 설정
   const itemsPerPage = 10;
 
   const handleLoad = async () => {
