@@ -145,6 +145,16 @@
 .hidden {
   display: none;
 }
+
+.error-message {
+  color: #747474;
+  white-space: pre-line;
+  font-size: 1.6rem;
+  text-align: center;
+  line-height: 2.6rem;
+  margin: 6rem 0 0 0;
+}
+
 /* 태블릿 버전 (768px ~ 1024px) */
 @media screen and (max-width: 1024px) {
   .company-investment-section {
