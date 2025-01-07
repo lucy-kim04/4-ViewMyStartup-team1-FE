@@ -1,19 +1,34 @@
 .ksh-investment-item {
     display: grid;
-    grid-template-columns: 0.5fr 1.5fr 1.5fr 1fr 1.5fr 1fr;
+    width: 100%;
+    height: 6.5rem;
+    grid-template-columns: 0.7fr 1.3fr 2fr 1fr 1.5fr 1fr;
     align-items: center;
-    margin-top: 1.5rem;
+    justify-items: center;
     font-size: 1.3rem;
-    background-color: #2e2e2e;
-    color: white;
+    border-bottom: 1px solid #4B4B4B;
+    background-color: #212121;
     border-radius: 0.5rem;
+    color: white;
+}
+
+.ksh-investment-item > div {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    text-align: center; 
 }
 
 .ksh-company-info {
+    width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: start;
     gap: 1rem;
+    font-size: 1.4rem;
+    font-weight: 500;
 }
 
 .ksh-company-info>img {
@@ -21,3 +36,16 @@
     height: 4rem;
     border-radius: 50%;
 }
+
+.body-item2-desc {
+    margin: 1.5rem 1.6rem;
+    text-overflow: ellipsis;
+    /* white-space: nowrap; */
+    overflow: hidden;
+    line-height: 1.6rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    -webkit-box-align: start;
+    -webkit-box-pack: end;
+  }

@@ -1,3 +1,10 @@
+.headerLine {
+    width: 100%;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #2e2e2e;
+  }
+
 .investment-status-page {
     min-height: 100vh;
 }
@@ -13,11 +20,17 @@
     color: white;
 }
 
+.investment-status p {
+    font-size: 2rem;
+}
+
 .investment-status-table {
     display: grid;
-    grid-template-columns: 1fr 1.5fr 1.5fr 1fr 1.5fr 1fr;
+    grid-template-columns: 0.7fr 1.3fr 2fr 1fr 1.5fr 1fr;
     margin-top: 2rem;
-    font-size: 1.3rem;
+    justify-items: center;
+    font-size: 1.4rem; 
+    font-weight: 500;
     background-color: #2e2e2e;
     color: white;
     padding: 1.5rem;
@@ -26,10 +39,9 @@
 
 .investment-list {
     flex-direction: column;
-    background-color: #2e2e2e;
+    background-color: #212121;
     margin-top: 2rem;
     color: white;
-    padding: 2rem;
     border-radius: 0.5rem;
     margin-top: 1rem;
 }

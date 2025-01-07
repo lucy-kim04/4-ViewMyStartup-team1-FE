@@ -1,47 +1,47 @@
 // 김세환
 
 import './InvestmentStatusPage.css';
-import Header from '../components/HeaderKSH';
+import Header from '../components/my-comparison/HearderJHM';
 import Container from '../components/Container';
 import Dropdown from '../components/Dropdown';
 import { useEffect, useState } from 'react';
 import Pagination from '../components/Pagination';
 import InvestmentList from '../components/InvestmentList';
 import { getCompanies } from '../apis/getCompanies_ksh';
-import { postInvestment } from '../apis/postInvestment_ksh';
-import CompanyInvestmentModal from '../components/CompanyInvestmentModal';
-import InvestmentDeleteModal from '../components/InvestmentDeleteModal';
+// import { postInvestment } from '../apis/postInvestment_ksh';
+// import CompanyInvestmentModal from '../components/CompanyInvestmentModal';
+// import InvestmentDeleteModal from '../components/InvestmentDeleteModal';
 
 function InvestmentStatusPage() {
   // 모달용 States
-  const [modalVisible, setModalVisible] = useState(false);
-  const [selectedCompany, setSelectedCompany] = useState({
-    name: '',
-    category: '',
-    info: '',
-  });
-  const [investment, setInvestment] = useState({
-    investorName: '',
-    amount: 0,
-    comment: '',
-    password: '',
-    passwordConfirm: '',
-  });
-  const [deleteModalVisible, setDeleteModalVisible] = useState(false);
+  // const [modalVisible, setModalVisible] = useState(false);
+  // const [selectedCompany, setSelectedCompany] = useState({
+  //   name: '',
+  //   category: '',
+  //   info: '',
+  // });
+  // const [investment, setInvestment] = useState({
+  //   investorName: '',
+  //   amount: 0,
+  //   comment: '',
+  //   password: '',
+  //   passwordConfirm: '',
+  // });
+  // const [deleteModalVisible, setDeleteModalVisible] = useState(false);
 
-  const openModal = () => {
-    setModalVisible(true);
-  }
-  const closeModal = () => {
-    setModalVisible(false);
-  }
+  // const openModal = () => {
+  //   setModalVisible(true);
+  // }
+  // const closeModal = () => {
+  //   setModalVisible(false);
+  // }
 
-  const openDeleteModal = () => {
-    setDeleteModalVisible(true);
-  };
-  const closeDeleteModal = () => {
-    setDeleteModalVisible(false);
-  };
+  // const openDeleteModal = () => {
+  //   setDeleteModalVisible(true);
+  // };
+  // const closeDeleteModal = () => {
+  //   setDeleteModalVisible(false);
+  // };
 
   const [selectedOption, setSelectedOption] = useState(
     'View My Startup 투자 금액 높은순',
@@ -107,8 +107,9 @@ function InvestmentStatusPage() {
   return (
     <div className="investment-status-page">
       <Header />
+      <div className="headerLine"></div>
       <Container>
-        <button className="delete-button" onClick={openDeleteModal}>삭제 모달 열기</button>
+        {/* <button className="delete-button" onClick={openDeleteModal}>삭제 모달 열기</button>
         {deleteModalVisible && <div
           className={`ksh-investment-delete-modal-overlay ${deleteModalVisible ? 'active' : ''}`}
           onClick={closeDeleteModal}
@@ -129,7 +130,7 @@ function InvestmentStatusPage() {
             investment={investment}
             onClose={closeModal}
           />
-        </div>}
+        </div>} */}
         <div className="investment-status">
           <p>투자 현황</p>
           <Dropdown
@@ -151,9 +152,11 @@ function InvestmentStatusPage() {
           </div>
         </div>
         <div className="investment-list">
-          <div>
-            <InvestmentList items={items} />
-          </div>
+            <InvestmentList 
+              items={items}  
+              currentPage={currentPage}
+              itemsPerPage={itemsPerPage}
+            />
         </div>
         <div>
           {totalItems > 0 && (
