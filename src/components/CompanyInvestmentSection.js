@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Pagination from './Pagination';
 import InvestmentDeleteModal from './InvestmentDeleteModal';
 import { createPortal } from 'react-dom';
+import CompanyInvestmentModal from './CompanyInvestmentModal';
 
 const formatToKoreanBillion = (amount) => {
   return (Math.round((amount / 100000000) * 10) / 10).toLocaleString();
@@ -12,7 +13,13 @@ const formatToKoreanBillion = (amount) => {
 const ITEMSPERPAGE_COUNT = 5;
 
 // 각 행별로 필요한 액션(드롭다운, 수정/삭제)이 있어서 분리함
-function TableRowCompany({ investment, index, openedMenuIdx, onClick }) {
+function TableRowCompany({
+  investment,
+  index,
+  openedMenuIdx,
+  onClick,
+  company,
+}) {
   // const [isShowDropdown, setIsShowDropdwon] = useState(false);
   const [dropdownPosition, setDropdownPosition] = useState({ top: 0, left: 0 });
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -52,7 +59,7 @@ function TableRowCompany({ investment, index, openedMenuIdx, onClick }) {
   const handleEdit = (e) => {
     e.stopPropagation(); // 이벤트 버블링 방지
     // 수정 액션 실행
-    console.log('수정하기 clicked');
+    setModalVisible(true);
     onClick(null); // 수동으로 드롭다운 닫기
   };
 
@@ -61,24 +68,37 @@ function TableRowCompany({ investment, index, openedMenuIdx, onClick }) {
     setShowDeleteModal(true);
     onClick(null); // 드롭다운 메뉴 닫기
   };
+  const handleModalClose = () => setModalVisible(false);
 
   return (
     <>
-      <div className='table-row'>
-        <div className='table-cell'>
+      <div
+        className={`ksh-investment-modal-overlay ${
+          modalVisible ? 'active' : ''
+        }`}
+        onClick={handleModalClose}
+      >
+        <CompanyInvestmentModal
+          company={company}
+          investment={investment}
+          onClose={handleModalClose}
+        />
+      </div>
+      <div className="table-row">
+        <div className="table-cell">
           <p>{investment.name}</p>
         </div>
-        <div className='table-cell'>
+        <div className="table-cell">
           <p>{investment.rank}위</p>
         </div>
-        <div className='table-cell'>
+        <div className="table-cell">
           <p>{formatToKoreanBillion(investment.amount)}억</p>
         </div>
-        <div className='table-cell'>
-          <p className='table-cell-comment'>{investment.comment}</p>
+        <div className="table-cell">
+          <p className="table-cell-comment">{investment.comment}</p>
         </div>
-        <div className='table-cell'>
-          <button className='more-button' onClick={handleMenuClick}>
+        <div className="table-cell">
+          <button className="more-button" onClick={handleMenuClick}>
             ⋮
           </button>
         </div>
@@ -92,28 +112,35 @@ function TableRowCompany({ investment, index, openedMenuIdx, onClick }) {
             left: dropdownPosition.left,
           }}
         >
-          <div className='dropdown-edit-btn' onClick={handleEdit}>
+          <div className="dropdown-edit-btn" onClick={handleEdit}>
             수정하기
           </div>
-          <div className='dropdown-delete-btn' onClick={handleDelete}>
+          <div className="dropdown-delete-btn" onClick={handleDelete}>
             삭제하기
           </div>
         </div>
       )}
       {showDeleteModal &&
         createPortal(
-          <InvestmentDeleteModal
-            investment={investment}
-            onClose={() => setShowDeleteModal(false)}
-            password='임시비밀번호'
-          />,
+          <div
+            className={`ksh-investment-modal-overlay ${
+              showDeleteModal ? 'active' : ''
+            }`}
+            onClick={handleModalClose}
+          >
+            <InvestmentDeleteModal
+              investment={investment}
+              onClose={() => setShowDeleteModal(false)}
+              password="임시비밀번호"
+            />
+          </div>,
           document.getElementById('root')
         )}
     </>
   );
 }
 
-export default function CompanyInvestmentSection({ companyId }) {
+export default function CompanyInvestmentSection({ company }) {
   const [investments, setInvestments] = useState([]);
   const [page, setPage] = useState(1);
   const [totalCount, setTotalCount] = useState(0);
@@ -125,7 +152,7 @@ export default function CompanyInvestmentSection({ companyId }) {
   // 에러 처리는 하지 않았습니다. 나중에 주영님이 적용해 보세요~ :)
   const handleLoad = async (options) => {
     try {
-      const result = await getCompanyInvestments(companyId, options);
+      const result = await getCompanyInvestments(company.id, options);
       if (!result || !result.companyInvestments.length) {
         setError(
           `아직 투자한 기업이 없어요.\n버튼을 눌러 기업에 투자해 보세요!`
@@ -162,31 +189,31 @@ export default function CompanyInvestmentSection({ companyId }) {
 
   return (
     <>
-      <div className='company-investment-section'>
-        <h1 className='table-title'>View My Startup에서 받은 투자</h1>
-        <div className='divider' />
-        <p className='investment-sum'>
+      <div className="company-investment-section">
+        <h1 className="table-title">View My Startup에서 받은 투자</h1>
+        <div className="divider" />
+        <p className="investment-sum">
           {`총 ${formatToKoreanBillion(totalInvestAmount)}억 원`}
         </p>
-        <div className='data-table'>
-          <div className='table-header'>
-            <div className='table-cell'>
-              <p className='table-cell-tit'>투자자 이름</p>
+        <div className="data-table">
+          <div className="table-header">
+            <div className="table-cell">
+              <p className="table-cell-tit">투자자 이름</p>
             </div>
-            <div className='table-cell'>
-              <p className='table-cell-tit'>순위</p>
+            <div className="table-cell">
+              <p className="table-cell-tit">순위</p>
             </div>
-            <div className='table-cell'>
-              <p className='table-cell-tit'>투자금액</p>
+            <div className="table-cell">
+              <p className="table-cell-tit">투자금액</p>
             </div>
-            <div className='table-cell'>
-              <p className='table-cell-tit'>투자 코멘트</p>
+            <div className="table-cell">
+              <p className="table-cell-tit">투자 코멘트</p>
             </div>
-            <div className='table-cell'></div>
+            <div className="table-cell"></div>
           </div>
-          <div className='table-body'>
+          <div className="table-body">
             {error ? (
-              <div className='error-message'>{error}</div>
+              <div className="error-message">{error}</div>
             ) : (
               investments.map((investment, idx) => (
                 <TableRowCompany
@@ -195,6 +222,7 @@ export default function CompanyInvestmentSection({ companyId }) {
                   index={idx}
                   openedMenuIdx={openedMenuIdx}
                   onClick={handleMenuClick}
+                  company={company}
                 />
               ))
             )}

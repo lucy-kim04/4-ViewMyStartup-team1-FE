@@ -15,7 +15,7 @@ import Pagination from '../Pagination.js';
 const INITIAL_USER_ID = 'fca6ef85-02ba-4868-a7b7-4f49ed16e881';
 
 // 한 페이지에 표시되는 company의 개수 설정(페이지네이션에 사용)
-const ITEMSPERPAGE_COUNT = 3;
+const ITEMSPERPAGE_COUNT = 5;
 
 export default function SelectMyCompanyModal({
   onModalClick,
