@@ -19,6 +19,7 @@ function TableRowCompany({
   openedMenuIdx,
   onClick,
   company,
+  onClickInvest,
 }) {
   // const [isShowDropdown, setIsShowDropdwon] = useState(false);
   const [dropdownPosition, setDropdownPosition] = useState({ top: 0, left: 0 });
@@ -82,6 +83,7 @@ function TableRowCompany({
           company={company}
           investment={investment}
           onClose={handleModalClose}
+          onClickInvest={onClickInvest}
         />
       </div>
       <div className="table-row">
@@ -147,6 +149,7 @@ export default function CompanyInvestmentSection({ company }) {
   const [totalInvestAmount, setTotalInvestAmount] = useState(0);
   const [openedMenuIdx, setOpenedMenuIdx] = useState();
   const [error, setError] = useState(null);
+  const [needReload, setNeedReload] = useState(false);
 
   // companyId를 이용해 db에서 투자 정보 불러오기
   // 에러 처리는 하지 않았습니다. 나중에 주영님이 적용해 보세요~ :)
@@ -185,7 +188,7 @@ export default function CompanyInvestmentSection({ company }) {
       skip: (page - 1) * ITEMSPERPAGE_COUNT,
       limit: ITEMSPERPAGE_COUNT,
     });
-  }, [page]);
+  }, [page, needReload]);
 
   return (
     <>
@@ -222,6 +225,9 @@ export default function CompanyInvestmentSection({ company }) {
                   index={idx}
                   openedMenuIdx={openedMenuIdx}
                   onClick={handleMenuClick}
+                  onClickInvest={() => {
+                    setNeedReload(true);
+                  }}
                   company={company}
                 />
               ))
