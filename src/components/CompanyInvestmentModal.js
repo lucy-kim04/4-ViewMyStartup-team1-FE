@@ -7,12 +7,18 @@ import { postInvestment } from '../apis/postInvestment_ksh';
 import InvestmentSuccessModal from './InvestmentSuccessModal';
 
 const CompanyInvestmentModal = ({ company, investment, onClose }) => {
-  const [investorName, setInvestorName] = useState('');
-  const [investmentAmount, setInvestmentAmount] = useState('');
-  const [investmentComment, setInvestmentComment] = useState(' ');
-  const [investmentPassword, setInvestmentPassword] = useState(' ');
+  const [investorName, setInvestorName] = useState(
+    investment ? investment.name : ''
+  );
+  const [investmentAmount, setInvestmentAmount] = useState(
+    investment ? investment.amount : ''
+  );
+  const [investmentComment, setInvestmentComment] = useState(
+    investment ? investment.comment : ''
+  );
+  const [investmentPassword, setInvestmentPassword] = useState('');
   const [investmentPasswordConfirm, setInvestmentPasswordConfirm] =
-    useState(' ');
+    useState('');
   const [isInvestmentSuccessful, setIsInvestmentSuccessful] = useState(false);
 
   const handleSetName = (name) => {
@@ -204,24 +210,26 @@ const CompanyInvestmentModal = ({ company, investment, onClose }) => {
           onBlur={(e) => handleSetPassword(e.target.value)}
         />
       </div>
-      <div className="ksh-investment-modal-section">
-        <div className="ksh-investment-modal-password-confirm-section">
-          <p>비밀번호 확인</p>
-          <h5>비밀번호를 다시 한 번 입력해주세요</h5>
+      {!investment && (
+        <div className="ksh-investment-modal-section">
+          <div className="ksh-investment-modal-password-confirm-section">
+            <p>비밀번호 확인</p>
+            <h5>비밀번호를 다시 한 번 입력해주세요</h5>
+          </div>
+          <input
+            placeholder="비밀번호를 다시 한 번 입력해주세요"
+            className="ksh-password-confirm"
+            type="password"
+            defaultValue={investmentPasswordConfirm}
+            onBlur={(e) => handleSetPasswordConfirm(e.target.value)}
+          />
+          <div className="ksh-password-mismatch-warning-section">
+            {investmentPassword !== investmentPasswordConfirm && (
+              <h5>비밀번호가 일치하지 않습니다</h5>
+            )}
+          </div>
         </div>
-        <input
-          placeholder="비밀번호를 다시 한 번 입력해주세요"
-          className="ksh-password-confirm"
-          type="password"
-          defaultValue={investmentPasswordConfirm}
-          onBlur={(e) => handleSetPasswordConfirm(e.target.value)}
-        />
-        <div className="ksh-password-mismatch-warning-section">
-          {investmentPassword !== investmentPasswordConfirm && (
-            <h5>비밀번호가 일치하지 않습니다</h5>
-          )}
-        </div>
-      </div>
+      )}
       <div className="ksh-investment-modal-bottom-section">
         <button
           className="ksh-investment-modal-cancel-button"
@@ -233,7 +241,7 @@ const CompanyInvestmentModal = ({ company, investment, onClose }) => {
           className="ksh-investment-modal-invest-button"
           onClick={handleInvestment}
         >
-          투자하기
+          {investment ? '수정하기' : '투자하기'}
         </button>
       </div>
     </div>
