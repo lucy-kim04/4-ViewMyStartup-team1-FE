@@ -6,7 +6,12 @@ import './CompanyInvestmentModal.css';
 import { postInvestment } from '../apis/postInvestment_ksh';
 import InvestmentSuccessModal from './InvestmentSuccessModal';
 
-const CompanyInvestmentModal = ({ company, investment, onClose }) => {
+const CompanyInvestmentModal = ({
+  company,
+  investment,
+  onClose,
+  onClickInvest,
+}) => {
   const [investorName, setInvestorName] = useState(
     investment ? investment.name : ''
   );
@@ -63,6 +68,7 @@ const CompanyInvestmentModal = ({ company, investment, onClose }) => {
       return;
     }
     postInvestmentData();
+    onClickInvest();
   };
 
   const postInvestmentData = async () => {
